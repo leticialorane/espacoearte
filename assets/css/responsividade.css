@@ -813,8 +813,15 @@
     height: 90px;
   }
 
+  header {
+  height: 90px;
+  top: -90px;
+  padding: 10px 0;
+  
+}
+
   .logo img {
-    height: 70px;
+    height: 90px;
   }
 
   /* Mostra botão das listras */
@@ -1095,7 +1102,7 @@ nav.aberto {
   }
 
   .logo img {
-    height: 58px;
+    height: 70px;
   }
 
   /* Tipografia */
