@@ -50,7 +50,7 @@
       <div class="chat-welcome" id="chatWelcome">
         <div class="chat-welcome__hero">
         <div class="chat-welcome__gold-line"></div>
-        <div class="chat-welcome__title">Olá! Bem-vindo à<br>Espaço & Arte</div>
+        <div class="chat-welcome__title">Bem-vindo à<br>Espaço & Arte!</div>
         <div class="chat-welcome__subtitle">Estamos aqui para transformar<br>seus ambientes com estilo.</div>
       </div>
 
@@ -202,7 +202,11 @@
 
     const currentStepData = steps[currentStep];
 
-    if (currentStepData.key === 'fim') lockInput();
+    if (currentStepData.key === 'fim') {
+      setTimeout(() => {
+        unlockInput();
+     }, 500);
+}
 
     showTypingThen(() => {
       const message = currentStepData.bot.replace(/{nome}/g, collectedData.nome || '');
