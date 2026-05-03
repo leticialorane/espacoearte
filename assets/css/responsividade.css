@@ -1181,3 +1181,565 @@ nav.aberto {
     height: 12rem;
   }
 }
+
+/* ---- BOTÃO HAMBÚRGUER (escondido no desktop) ---- */
+.btn-menu-mobile {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1100;
+}
+ 
+.btn-menu-mobile span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: #282828;
+  border-radius: 2px;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+ 
+/* Animação X ao abrir */
+.btn-menu-mobile.aberto span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.btn-menu-mobile.aberto span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.btn-menu-mobile.aberto span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+ 
+ 
+/* ============================================================
+   TABLET — 1024px
+   ============================================================ */
+@media (max-width: 1024px) {
+ 
+  /* Header */
+  header {
+    height: 100px;
+  }
+ 
+  #header-container {
+    max-width: 90%;
+    height: 70px;
+  }
+ 
+  .logo img {
+    height: 70px;
+  }
+ 
+  nav {
+    margin-top: 30px;
+    margin-left: 2rem;
+  }
+ 
+  nav ul {
+    gap: 28px;
+  }
+ 
+  /* Sections com grid 2 colunas */
+  .conteudo-esquerda {
+    margin-left: 8%;
+    margin-right: 3rem;
+  }
+ 
+  .conteudo-direita {
+    margin-right: 8%;
+    margin-left: 3rem;
+  }
+ 
+  /* Cards diferenciais */
+  .cards {
+    max-width: 90%;
+    gap: 16px;
+  }
+ 
+  .card {
+    width: auto;
+    height: auto;
+    min-height: 150px;
+    padding: 1.25rem;
+  }
+ 
+  /* Formulário */
+  .formulario {
+    margin-right: 8%;
+    width: 90%;
+  }
+ 
+  /* Footer */
+  .footer-container {
+    max-width: 90%;
+    gap: 24px;
+  }
+ 
+  .footer-enderecos {
+    width: auto;
+  }
+}
+ 
+ 
+/* ============================================================
+   MOBILE — 768px
+   ============================================================ */
+@media (max-width: 768px) {
+ 
+  /* ---- HEADER ---- */
+  header {
+    height: 70px;
+    position: sticky;
+    top: 0;
+  }
+ 
+  #header-container {
+    max-width: 92%;
+    height: 55px;
+    position: relative;
+  }
+ 
+  .logo img {
+    height: 55px;
+  }
+ 
+  /* Mostra o botão hambúrguer */
+  .btn-menu-mobile {
+    display: flex;
+    position: relative;
+    z-index: 1100;
+  }
+ 
+  /* Nav vira drawer lateral/vertical */
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: #c4cfb8;
+    margin: 0;
+    padding: 90px 32px 40px;
+    z-index: 1050;
+    overflow-y: auto;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+  }
+ 
+  /* Overlay escuro atrás do menu */
+  nav::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0);
+    pointer-events: none;
+    z-index: -1;
+    transition: background 0.4s ease;
+  }
+ 
+  nav.nav-aberto {
+    right: 0;
+  }
+ 
+  nav.nav-aberto::before {
+    background: rgba(0,0,0,0.45);
+    pointer-events: auto;
+  }
+ 
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+ 
+  nav ul li {
+    border-bottom: 0.5px solid rgba(40,40,40,0.2);
+    padding: 16px 0;
+  }
+ 
+  nav ul li:last-child {
+    border-bottom: none;
+  }
+ 
+  nav a {
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+ 
+  /* Dropdown no mobile: sempre visível abaixo */
+  .opcao-dropdown {
+    position: static;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    background: transparent;
+    height: auto;
+    padding: 6px 0 0 12px;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+  }
+ 
+  .opcao-dropdown a {
+    font-size: 0.78rem;
+    color: #4a5e3a;
+  }
+ 
+  /* Remove efeito hover de escala no mobile */
+  .dropdown:hover .hover-effect {
+    scale: 1;
+  }
+ 
+  /* ---- BANNER ---- */
+  .banner-slider {
+    height: 52vw;
+    min-height: 200px;
+    max-height: 380px;
+  }
+ 
+  .banner-slider img,
+  .banner-slider .slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+ 
+  /* ---- FRASE INTRODUÇÃO ---- */
+  .frase {
+    padding: 2rem 1.5rem;
+  }
+ 
+  .frase h2 {
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+  }
+ 
+  .frase::before,
+  .frase::after {
+    display: none;
+  }
+ 
+  /* ---- SEÇÕES CONTEÚDO (grid → stack) ---- */
+  .conteudo {
+    grid-template-columns: 1fr;
+  }
+ 
+  /* Móveis planejados: texto em cima, imagem embaixo */
+  .conteudo-esquerda {
+    margin: 2.5rem 6% 1.5rem;
+    max-width: 100%;
+  }
+ 
+  .imagem-direita {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
+    order: 2;
+  }
+ 
+  /* Assessoria: inverte para imagem aparecer em cima */
+  .imagem-esquerda {
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    object-position: center;
+    order: -1;
+  }
+ 
+  .conteudo-direita {
+    margin: 2rem 6% 2.5rem;
+    max-width: 100%;
+    justify-self: start;
+  }
+ 
+  .conteudo p {
+    margin: 1rem 0;
+  }
+ 
+  h1 {
+    font-size: 1.4rem;
+  }
+ 
+  /* Botão orçamento: largura total */
+  .btn-orcamento {
+    width: 100%;
+    max-width: 100%;
+    height: 3rem;
+  }
+ 
+  /* ---- PROJETO DE INTERIORES ---- */
+  .projeto-interiores-container,
+  #depoimentos-container {
+    width: 92%;
+    margin: 2.5rem 0 2rem;
+  }
+ 
+  .projeto-interiores-carousel {
+    width: 92%;
+  }
+ 
+  .projeto-interiores-carousel-imgs {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+ 
+  .img-wrapper.projeto {
+    margin-right: 0;
+    margin-bottom: 6px;
+  }
+ 
+  .img-wrapper.execucao {
+    margin-left: 0;
+  }
+ 
+  .img-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+ 
+  .carousel-btns {
+    width: 100%;
+    top: auto;
+    bottom: -40px;
+    transform: none;
+    position: relative;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 12px;
+  }
+ 
+  .carousel-circle-navigation ul {
+    margin-top: 1rem;
+  }
+ 
+  .container-combotao {
+    width: 92%;
+  }
+ 
+  /* ---- CARDS DIFERENCIAIS ---- */
+  #diferenciais {
+    padding: 2.5rem 0;
+  }
+ 
+  .cards {
+    max-width: 92%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: auto;
+  }
+ 
+  .card {
+    width: 100%;
+    height: auto;
+    min-height: 130px;
+    padding: 1.25rem 1rem;
+  }
+ 
+  /* ---- CONTATO / FORMULÁRIO ---- */
+  #contato {
+    padding: 3rem 0;
+  }
+ 
+  #contato h1 {
+    font-size: 1.3rem;
+  }
+ 
+  .conteudo-esquerda {
+    margin: 0 6% 2rem;
+  }
+ 
+  .formulario {
+    width: 92%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 6%;
+  }
+ 
+  /* ---- RODAPÉ ---- */
+  footer {
+    height: auto;
+    padding-bottom: 1.5rem;
+  }
+ 
+  .footer-container {
+    max-width: 92%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    padding-top: 2rem;
+  }
+ 
+  .logo-cnpj {
+    justify-items: start;
+  }
+ 
+  .footer-enderecos {
+    width: 100%;
+  }
+ 
+  #footer-credits p {
+    text-align: center;
+    font-size: 0.7rem;
+    margin-top: 1.5rem;
+    padding: 0 6%;
+  }
+ 
+  /* ---- PÁGINA MÓVEIS — trabalhos realizados ---- */
+  .trabalhos-realizados-carousel {
+    width: 92%;
+  }
+ 
+  .trabalhos-realizados-carousel-imgs {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+ 
+  .slide-moveis-esquerda,
+  .slide-moveis-meio,
+  .slide-moveis-direita {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+ 
+  /* ---- PÁGINA PROJETOS — portfólio ---- */
+  #portfolio-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 0 4%;
+  }
+ 
+  .portfolio-card::before {
+    font-size: 22px;
+  }
+ 
+  /* ---- PÁGINA SOBRE — depoimentos ---- */
+  .depoimentos-carousel {
+    width: 92%;
+  }
+ 
+  .depoimentos-carousel-container {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+ 
+  .card-depoimentos {
+    width: 100%;
+    max-width: 340px;
+  }
+ 
+  .card-esquerda,
+  .card-direita {
+    margin: 0;
+  }
+ 
+  /* ---- PÁGINA SOBRE — apresentação ---- */
+  .conteudo-apresentacao {
+    grid-template-columns: 1fr;
+  }
+ 
+  .img-apresentacao-container.marcio {
+    padding: 2rem 6% 1rem;
+  }
+ 
+  .img-apresentacao {
+    width: 180px;
+    height: 180px;
+  }
+ 
+  /* ---- ASSESSORIA — frase e botão ---- */
+  .frase-assessoria h2 {
+    width: 92%;
+    font-size: 1rem;
+  }
+ 
+  #botao-container {
+    width: 92%;
+  }
+ 
+  /* ---- BANNER PÁGINAS INTERNAS ---- */
+  .banner-container img {
+    height: 180px;
+    object-fit: cover;
+  }
+}
+ 
+ 
+/* ============================================================
+   SMALL MOBILE — 480px
+   ============================================================ */
+@media (max-width: 480px) {
+ 
+  h1 {
+    font-size: 1.2rem;
+  }
+ 
+  p {
+    font-size: 0.9rem;
+    line-height: 1.8rem;
+  }
+ 
+  /* Cards diferenciais: 1 coluna */
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+ 
+  .card {
+    min-height: 110px;
+    padding: 1rem;
+  }
+ 
+  .card p {
+    font-size: 0.85rem;
+    line-height: 1.3rem;
+  }
+ 
+  /* Portfólio: 1 coluna */
+  #portfolio-container {
+    grid-template-columns: 1fr;
+  }
+ 
+  .portfolio-card::before {
+    font-size: 28px;
+  }
+ 
+  /* Botão */
+  .btn-orcamento {
+    height: 3.25rem;
+  }
+ 
+  .btn-orcamento span {
+    font-size: 0.85rem;
+  }
+ 
+  /* Footer: compacto */
+  .footer-contatos a,
+  .footer-enderecos span {
+    font-size: 0.8rem;
+  }
+ 
+  .contato-item img,
+  .footer-enderecos img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+ 

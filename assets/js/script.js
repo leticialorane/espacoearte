@@ -378,8 +378,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 })();
 
-// Adicione este código no final do seu script.js
-
 // ------------- Menu Fixo com Scroll -------------------
 let lastScroll = 0;
 const header = document.querySelector('header');
@@ -399,8 +397,6 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 // ------------- Fim Menu Fixo com Scroll -------------------
-
-// Adicione este código no final do seu script.js
 
 //------------- Depoimentos Slides --------
 const depoimentosCarousel = document.querySelectorAll(".depoimentos-carousel-container");
@@ -457,60 +453,58 @@ if (depoimentosCarousel.length > 0) {
   window.addEventListener("load", atualizarSlideDepoimentos);
 }
 
-// ===== MENU HAMBÚRGUER MOBILE =====
+/* ============================================================
+   MENU HAMBÚRGUER MOBILE
+   ============================================================ */
+
 (function () {
-  const btn = document.getElementById('btn-menu-mobile');
+  const btnMenu = document.getElementById('btn-menu-mobile');
   const nav = document.querySelector('nav');
 
-  if (!btn || !nav) return;
+  if (!btnMenu || !nav) return;
 
-  // Cria o overlay dinamicamente
+  // Cria o overlay dinamicamente (uma só vez)
   const overlay = document.createElement('div');
   overlay.classList.add('menu-overlay');
   document.body.appendChild(overlay);
 
   function abrirMenu() {
-    btn.classList.add('ativo');       // botão vira X
-    nav.classList.add('aberto');      // nav abre (igual ao CSS: nav.aberto)
-    overlay.classList.add('ativo');
+    nav.classList.add('nav-aberto');
+    btnMenu.classList.add('aberto');
+    overlay.classList.add('visivel');
+    btnMenu.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
 
   function fecharMenu() {
-    btn.classList.remove('ativo');
-    nav.classList.remove('aberto');
-    overlay.classList.remove('ativo');
+    nav.classList.remove('nav-aberto');
+    btnMenu.classList.remove('aberto');
+    overlay.classList.remove('visivel');
+    btnMenu.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
-    nav.querySelectorAll('li.dropdown.aberto-mobile').forEach(li => li.classList.remove('aberto-mobile'));
   }
 
-  btn.addEventListener('click', function () {
-    nav.classList.contains('aberto') ? fecharMenu() : abrirMenu();
+  // Abre/fecha ao clicar no botão
+  btnMenu.addEventListener('click', () => {
+    const estaAberto = nav.classList.contains('nav-aberto');
+    estaAberto ? fecharMenu() : abrirMenu();
   });
 
+  // Fecha ao clicar no overlay
   overlay.addEventListener('click', fecharMenu);
 
-  // Dropdowns abrem/fecham no mobile (usa aberto-mobile, igual ao CSS)
-  nav.querySelectorAll('li.dropdown > a').forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        link.closest('li.dropdown').classList.toggle('aberto-mobile');
-      }
-    });
-  });
-
-  // Fecha ao clicar em links de submenu
-  nav.querySelectorAll('.opcao-dropdown a').forEach(function (link) {
+  // Fecha ao clicar em qualquer link do menu
+  nav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', fecharMenu);
   });
 
-  // Fecha ao clicar em links diretos
-  nav.querySelectorAll('li:not(.dropdown) > a').forEach(function (link) {
-    link.addEventListener('click', fecharMenu);
+  // Fecha com tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') fecharMenu();
   });
 
-  window.addEventListener('resize', function () {
+  // Fecha se a janela for redimensionada para desktop
+  window.addEventListener('resize', () => {
     if (window.innerWidth > 768) fecharMenu();
   });
 })();

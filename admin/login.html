@@ -11,26 +11,29 @@
 <body>
 <div class="page">
 
-  <!-- LEFT — identidade verde oliva com SVG orgânico -->
+<!-- LEFT -->
   <div class="left">
     <div class="left-bg">
-      <img src="img/QUARTO FILHA 5.png" alt="Foto de ambiente">
+      <img src="img/QUARTO FILHA 5.png" alt="Projeto de interiores">
     </div>
 
     <div class="brand">
       <img src="img/LOGO.png" alt="Espaço e Arte">
     </div>
 
+    <!-- HERO -->
     <div class="hero">
-      <p class="hero-eyebrow">Móveis & Interiores</p>
+      <p class="hero-eyebrow">MÓVEIS & INTERIORES</p>
+
       <h1 class="hero-title">
-        Design que<br>
-        <em>transforma</em><br>
-        ambientes.
+        Design que <em>eleva</em><br>
+        cada ambiente.
       </h1>
+
       <div class="hero-rule"></div>
+
       <p class="hero-body">
-        Móveis planejados e interiores que unem estética, funcionalidade e exclusividade.
+        Projetos sob medida que combinam sofisticação, funcionalidade e identidade em cada detalhe.
       </p>
     </div>
 
@@ -40,71 +43,96 @@
   <!-- RIGHT -->
   <div class="right">
     <div class="card">
+
+      <!-- HEADER -->
       <div class="card-header">
-        <p class="card-eyebrow">Área Administrativa</p>
-        <h2 class="card-title">Acesse o painel</h2>
-        <p class="card-sub">Entre com suas credenciais para continuar</p>
+        <p class="card-eyebrow">ÁREA ADMINISTRATIVA</p>
+
+        <h2 class="card-title">Bem-vindo de volta</h2>
+
+        <p class="card-sub">
+          Acesse sua conta para continuar.
+        </p>
       </div>
 
+      <!-- EMAIL -->
       <div class="field">
         <label for="email">E-mail</label>
         <div class="input-wrap">
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/>
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M2 7l10 7 10-7"/>
           </svg>
-          <input id="email" type="email" placeholder="seu@email.com" autocomplete="email">
+
+          <input id="email" type="email" placeholder="nome@empresa.com" autocomplete="email">
         </div>
       </div>
 
+      <!-- SENHA -->
       <div class="field">
         <label for="password">Senha</label>
         <div class="input-wrap">
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
           </svg>
+
           <input id="password" type="password" placeholder="••••••••" autocomplete="current-password">
+
           <button class="toggle-pw" type="button" onclick="togglePw()" aria-label="Mostrar senha">
             <svg id="eye-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
             </svg>
           </button>
         </div>
       </div>
 
+      <!-- EXTRAS -->
       <div class="extras">
         <label class="remember">
-          <input type="checkbox"> Lembrar-me
+          <input type="checkbox"> Manter conectado
         </label>
-        <a href="#" class="forgot">Esqueceu a senha?</a>
+
+        <a href="#" class="forgot">Recuperar acesso</a>
       </div>
 
+      <!-- BOTÃO -->
       <button class="btn" type="button">
-        Entrar
+        ACESSAR
         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
       </button>
 
-      <div class="divider"><span>E&A</span></div>
+      <div class="divider"><span>E&A/span></div>
 
       <div id="footer-credits">
-        <p>&copy; Espaço e Arte. Todos os direitos reservados. Desenvolvido por Letícia Lorrane | Letícia Marques</p>
+        <p>
+          &copy; Espaço e Arte. Todos os direitos reservados.<br>
+          Desenvolvido por Leticia Lorrane & Daniela Almeida
+        </p>
       </div>
+
     </div>
   </div>
 
 </div>
 
 <script>
-  function togglePw() {
-    const input = document.getElementById('password');
-    const icon  = document.getElementById('eye-icon');
-    const show  = input.type === 'password';
-    input.type  = show ? 'text' : 'password';
-    icon.innerHTML = show
-      ? `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>`
-      : `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
-  }
+function togglePw() {
+  const input = document.getElementById('password');
+  const icon  = document.getElementById('eye-icon');
+
+  const show = input.type === 'password';
+
+  input.type = show ? 'text' : 'password';
+
+  icon.innerHTML = show
+    ? `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>`
+    : `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
+}
 </script>
+
 </body>
 </html>

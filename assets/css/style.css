@@ -536,11 +536,13 @@ header.show {
   text-align: center;
   align-content: center;
   padding: 1.875rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
   /* Sombra aparece só ao interagir */
   box-shadow: 0.625rem 0.625rem 1.5rem rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px);
 }
 
 .card img {
