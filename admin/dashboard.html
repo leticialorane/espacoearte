@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espaço &amp; Arte — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ========== Sidebar ========== -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h1>Espaço &amp;<br>Arte</h1>
+      <p>Painel Admin</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="sidebar-nav-label">Menu</span>
+      <a href="#" class="sidebar-nav-item sidebar-nav-item--active">
+        <i class="ti ti-layout-dashboard" aria-hidden="true"></i> Dashboard
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-users" aria-hidden="true"></i> Clientes
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-briefcase" aria-hidden="true"></i> Serviços
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-calendar" aria-hidden="true"></i> Agenda
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-file-text" aria-hidden="true"></i> Currículos
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="sidebar-footer-email">exemplo@gmail.com</span>
+      <button class="sidebar-footer-logout">
+        <i class="ti ti-logout" aria-hidden="true"></i> Sair
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========== Main ========== -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h2>Dashboard</h2>
+        <p>Visão geral do desempenho e atividades da Espaço &amp; Arte.</p>
+      </div>
+      <div class="topbar-right">
+        <span id="topbar-date" class="topbar-date"></span>
+        <div class="topbar-avatar">EA</div>
+      </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="page-content">
+
+      <!-- ---- Linha 1: Cards KPI ---- -->
+      <div class="kpi-grid">
+
+        <div id="card-kpi-faturamento" class="card-kpi">
+          <div class="card-kpi-icon card-kpi-icon--green">
+            <i class="ti ti-trending-up" aria-hidden="true"></i>
+          </div>
+          <div class="card-kpi-label">Faturamento</div>
+          <div class="card-kpi-value">R$ 24.500</div>
+          <div class="card-kpi-delta card-kpi-delta--positivo">
+            <i class="ti ti-arrow-up"></i> +15%
+            <span class="card-kpi-delta-texto">vs mês anterior</span>
+          </div>
+        </div>
+
+        <div id="card-kpi-clientes" class="card-kpi">
+          <div class="card-kpi-icon card-kpi-icon--azul">
+            <i class="ti ti-users" aria-hidden="true"></i>
+          </div>
+          <div class="card-kpi-label">Novos Clientes</div>
+          <div class="card-kpi-value">12</div>
+          <div class="card-kpi-delta card-kpi-delta--positivo">
+            <i class="ti ti-arrow-up"></i> +5%
+            <span class="card-kpi-delta-texto">vs mês anterior</span>
+          </div>
+        </div>
+
+        <div id="card-kpi-servicos" class="card-kpi">
+          <div class="card-kpi-icon card-kpi-icon--amarelo">
+            <i class="ti ti-briefcase" aria-hidden="true"></i>
+          </div>
+          <div class="card-kpi-label">Serviços Ativos</div>
+          <div class="card-kpi-value">8</div>
+          <div class="card-kpi-delta card-kpi-delta--negativo">
+            <i class="ti ti-arrow-down"></i> -2%
+            <span class="card-kpi-delta-texto">vs mês anterior</span>
+          </div>
+        </div>
+
+        <div id="card-kpi-curriculos" class="card-kpi">
+          <div class="card-kpi-icon card-kpi-icon--teal">
+            <i class="ti ti-file-text" aria-hidden="true"></i>
+          </div>
+          <div class="card-kpi-label">Currículos Recebidos</div>
+          <div class="card-kpi-value">24</div>
+          <div class="card-kpi-delta card-kpi-delta--positivo">
+            <i class="ti ti-arrow-up"></i> +12%
+            <span class="card-kpi-delta-texto">vs mês anterior</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ---- Linha 2: Gráficos ---- -->
+      <div class="graficos-linha">
+
+        <!-- Gráfico de linha: faturamento -->
+        <div id="card-grafico-faturamento" class="card-grafico">
+          <div class="card-grafico-titulo">Evolução do Faturamento</div>
+          <div class="card-grafico-area">
+            <canvas id="canvas-faturamento"></canvas>
+          </div>
+        </div>
+
+        <!-- Gráfico de barras: atendimentos -->
+        <div id="card-grafico-atendimentos" class="card-grafico">
+          <div class="card-grafico-titulo">Atendimentos por Serviço</div>
+          <div class="card-barras">
+
+            <div class="card-barras-item">
+              <div class="card-barras-info">
+                <span class="card-barras-servico">Assessoria em Obras</span>
+                <span class="card-barras-quantidade">38 atendimentos</span>
+              </div>
+              <div class="card-barras-trilha">
+                <div class="card-barras-preenchimento card-barras-preenchimento--delay-1" style="width: 100%;"></div>
+              </div>
+            </div>
+
+            <div class="card-barras-item">
+              <div class="card-barras-info">
+                <span class="card-barras-servico">Móveis Planejados</span>
+                <span class="card-barras-quantidade">31 atendimentos</span>
+              </div>
+              <div class="card-barras-trilha">
+                <div class="card-barras-preenchimento card-barras-preenchimento--delay-2" style="width: 81.6%;"></div>
+              </div>
+            </div>
+
+            <div class="card-barras-item">
+              <div class="card-barras-info">
+                <span class="card-barras-servico">Projeto Quarto</span>
+                <span class="card-barras-quantidade">22 atendimentos</span>
+              </div>
+              <div class="card-barras-trilha">
+                <div class="card-barras-preenchimento card-barras-preenchimento--delay-3" style="width: 57.9%;"></div>
+              </div>
+            </div>
+
+            <div class="card-barras-item">
+              <div class="card-barras-info">
+                <span class="card-barras-servico">Projeto Banheiro</span>
+                <span class="card-barras-quantidade">14 atendimentos</span>
+              </div>
+              <div class="card-barras-trilha">
+                <div class="card-barras-preenchimento card-barras-preenchimento--delay-4" style="width: 36.8%;"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ---- Linha 3: Atividades + Resumo ---- -->
+      <div class="info-linha">
+
+        <!-- Card: Atividades Recentes -->
+        <div id="card-atividades" class="card-info">
+          <div class="card-info-titulo">Atividades Recentes</div>
+          <div class="card-atividades-lista">
+
+            <div class="card-atividades-item">
+              <div class="card-atividades-icone card-atividades-icone--verde">
+                <i class="ti ti-file-text" aria-hidden="true"></i>
+              </div>
+              <div class="card-atividades-texto">
+                <p>Novo currículo recebido: Ana Silva</p>
+                <span>Há 2 horas</span>
+              </div>
+            </div>
+
+            <div class="card-atividades-item">
+              <div class="card-atividades-icone card-atividades-icone--teal">
+                <i class="ti ti-check" aria-hidden="true"></i>
+              </div>
+              <div class="card-atividades-texto">
+                <p>Reunião de Curadoria concluída</p>
+                <span>Há 4 horas</span>
+              </div>
+            </div>
+
+            <div class="card-atividades-item">
+              <div class="card-atividades-icone card-atividades-icone--azul">
+                <i class="ti ti-user-plus" aria-hidden="true"></i>
+              </div>
+              <div class="card-atividades-texto">
+                <p>Novo cliente cadastrado: Instituto Cultural</p>
+                <span>Ontem</span>
+              </div>
+            </div>
+
+            <div class="card-atividades-item">
+              <div class="card-atividades-icone card-atividades-icone--amarelo">
+                <i class="ti ti-currency-dollar" aria-hidden="true"></i>
+              </div>
+              <div class="card-atividades-texto">
+                <p>Pagamento confirmado: Workshop de Aquarela</p>
+                <span>Ontem</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Card: Resumo do Mês -->
+        <div id="card-resumo-mes" class="card-info">
+          <div class="card-info-titulo">Resumo do Mês</div>
+          <div class="card-resumo-lista">
+            <div class="card-resumo-item">
+              <span class="card-resumo-label">Projetos em andamento</span>
+              <span class="card-resumo-valor">5</span>
+            </div>
+            <div class="card-resumo-item">
+              <span class="card-resumo-label">Reuniões realizadas</span>
+              <span class="card-resumo-valor">18</span>
+            </div>
+            <div class="card-resumo-item">
+              <span class="card-resumo-label">Taxa de conversão</span>
+              <span class="card-resumo-valor">34%</span>
+            </div>
+            <div class="card-resumo-item">
+              <span class="card-resumo-label">Ticket médio</span>
+              <span class="card-resumo-valor">R$ 3.062</span>
+            </div>
+            <div class="card-resumo-item">
+              <span class="card-resumo-label">Clientes ativos</span>
+              <span class="card-resumo-valor">47</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>
