@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espaço & Arte — Clientes</title>
+
+  <!-- CSS EXCLUSIVO desta página -->
+  <link rel="stylesheet" href="clientes.css">
+  <link rel="stylesheet" href="responsividade.css">
+
+  <!-- Ícones Tabler -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-brand">
+      <h1>Espaço &<br>Arte</h1>
+      <p>Painel Administrativo</p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <span class="sidebar-nav-label">Menu</span>
+
+      <a href="dashboard.html" class="sidebar-nav-item">
+        <i class="ti ti-layout-dashboard"></i>
+        Dashboard
+      </a>
+
+      <a href="clientes.html" class="sidebar-nav-item sidebar-nav-item--active">
+        <i class="ti ti-users"></i>
+        Clientes
+      </a>
+
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-briefcase"></i>
+        Serviços
+      </a>
+
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-calendar"></i>
+        Agenda
+      </a>
+
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-file-text"></i>
+        Currículos
+      </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="sidebar-footer-email">exemplo@gmail.com</span>
+      <button class="sidebar-footer-logout">
+        <i class="ti ti-logout"></i>
+        Sair
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+      <div class="topbar-left">
+        <button class="menu-mobile" aria-label="Abrir menu">
+          <i class="ti ti-menu-2"></i>
+        </button>
+        <div>
+          <h2>Clientes</h2>
+          <p>Gerencie empresas e pessoas que contratam a Espaço & Arte.</p>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <span class="topbar-date">Segunda-feira, 09 de Junho</span>
+        <div class="topbar-avatar">EA</div>
+      </div>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="page-content">
+
+      <!-- CABEÇALHO -->
+      <div class="clientes-header">
+        <div>
+          <h2 class="clientes-titulo">Clientes</h2>
+          <p class="clientes-subtitulo">
+            Gerencie empresas e pessoas que contratam a Espaço & Arte.
+          </p>
+        </div>
+        <button class="btn-novo-cliente">
+          <i class="ti ti-plus"></i>
+          Novo Cliente
+        </button>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-grid">
+
+        <div class="card-kpi">
+          <div class="card-kpi-label">Total de Clientes</div>
+          <div class="card-kpi-value">156</div>
+        </div>
+
+        <div class="card-kpi">
+          <div class="card-kpi-label">Clientes Ativos</div>
+          <div class="card-kpi-value">112</div>
+        </div>
+
+        <div class="card-kpi">
+          <div class="card-kpi-label">Novos este mês</div>
+          <div class="card-kpi-value">8</div>
+        </div>
+
+        <div class="card-kpi">
+          <div class="card-kpi-label">Inativos</div>
+          <div class="card-kpi-value">44</div>
+        </div>
+
+      </div>
+
+      <!-- TABELA -->
+      <div class="card-info">
+
+        <!-- FILTROS -->
+        <div class="clientes-filtros">
+
+          <div class="clientes-busca">
+            <i class="ti ti-search"></i>
+            <input type="text" placeholder="Buscar por nome ou e-mail...">
+          </div>
+
+          <button class="btn-filtro">
+            <i class="ti ti-filter"></i>
+            Filtrar
+          </button>
+
+        </div>
+
+        <!-- TABELA -->
+        <table class="clientes-tabela">
+
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Telefone</th>
+              <th>Último Contato</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>
+                <strong>Empresa Alpha Ltda</strong>
+                <span>contato@alpha.com</span>
+              </td>
+              <td>(11) 98765-4321</td>
+              <td>16/10/2023</td>
+              <td><span class="status status-ativo">Ativo</span></td>
+              <td class="acoes">
+                <i class="ti ti-pencil"></i>
+                <i class="ti ti-trash"></i>
+                <i class="ti ti-dots-vertical"></i>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Galeria Moderna</strong>
+                <span>diretoria@galeriamoderna.art</span>
+              </td>
+              <td>(11) 91234-5678</td>
+              <td>14/10/2023</td>
+              <td><span class="status status-ativo">Ativo</span></td>
+              <td class="acoes">
+                <i class="ti ti-pencil"></i>
+                <i class="ti ti-trash"></i>
+                <i class="ti ti-dots-vertical"></i>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Roberto Dias</strong>
+                <span>roberto@email.com</span>
+              </td>
+              <td>(21) 99988-7766</td>
+              <td>08/09/2023</td>
+              <td><span class="status status-inativo">Inativo</span></td>
+              <td class="acoes">
+                <i class="ti ti-pencil"></i>
+                <i class="ti ti-trash"></i>
+                <i class="ti ti-dots-vertical"></i>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Instituto Cultural</strong>
+                <span>contato@institutocultural.org</span>
+              </td>
+              <td>(31) 97777-8888</td>
+              <td>25/10/2023</td>
+              <td><span class="status status-ativo">Ativo</span></td>
+              <td class="acoes">
+                <i class="ti ti-pencil"></i>
+                <i class="ti ti-trash"></i>
+                <i class="ti ti-dots-vertical"></i>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<script>
+  const menuBtn = document.querySelector('.menu-mobile');
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+
+  menuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+  });
+
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+</script>
+
+</body>
+</html>

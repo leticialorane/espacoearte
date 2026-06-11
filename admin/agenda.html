@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espaço &amp; Arte — Agenda</title>
+
+  <link rel="stylesheet" href="agenda.css">
+  <link rel="stylesheet" href="responsividade.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <h1>Espaço &amp;<br>Arte</h1>
+      <p>Painel Administrativo</p>
+    </div>
+    <nav class="sidebar-nav">
+      <span class="sidebar-nav-label">Menu</span>
+      <a href="dashboard.html" class="sidebar-nav-item">
+        <i class="ti ti-layout-dashboard"></i> Dashboard
+      </a>
+      <a href="clientes.html" class="sidebar-nav-item">
+        <i class="ti ti-users"></i> Clientes
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-briefcase"></i> Serviços
+      </a>
+      <a href="agenda.html" class="sidebar-nav-item sidebar-nav-item--active">
+        <i class="ti ti-calendar"></i> Agenda
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-file-text"></i> Currículos
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <span class="sidebar-footer-email">exemplo@gmail.com</span>
+      <button class="sidebar-footer-logout">
+        <i class="ti ti-logout"></i> Sair
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-mobile" id="menu-mobile-btn" aria-label="Abrir menu">
+          <i class="ti ti-menu-2"></i>
+        </button>
+        <div>
+          <h2>Agenda</h2>
+          <p>Gerencie compromissos e reuniões da Espaço &amp; Arte.</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span id="topbar-date" class="topbar-date"></span>
+        <div class="topbar-avatar">EA</div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- CONTROLES -->
+      <div class="agenda-controles">
+        <div class="agenda-controles-esquerda">
+          <button class="agenda-nav-btn" id="btn-anterior" title="Semana anterior">
+            <i class="ti ti-chevron-left"></i>
+          </button>
+          <button class="agenda-nav-btn" id="btn-proximo" title="Próxima semana">
+            <i class="ti ti-chevron-right"></i>
+          </button>
+          <button class="btn-hoje" id="btn-hoje">Hoje</button>
+          <span class="agenda-mes-atual" id="agenda-mes-atual"></span>
+        </div>
+        <div class="agenda-controles-direita">
+          <div class="agenda-view-toggle">
+            <button class="agenda-view-btn agenda-view-btn--active">Semana</button>
+            <button class="agenda-view-btn">Mês</button>
+            <button class="agenda-view-btn">Dia</button>
+          </div>
+          <button class="btn-novo-evento" id="btn-novo-evento">
+            <i class="ti ti-plus"></i>
+            Novo Evento
+          </button>
+        </div>
+      </div>
+
+      <!-- WRAPPER PRINCIPAL -->
+      <div class="agenda-wrapper">
+
+        <!-- LATERAL: mini calendário + próximos -->
+        <div class="agenda-lateral">
+
+          <div class="mini-cal" id="mini-cal">
+            <div class="mini-cal-header">
+              <span class="mini-cal-titulo" id="mini-cal-titulo"></span>
+              <div style="display:flex;gap:4px;">
+                <button class="mini-cal-nav" id="mini-prev"><i class="ti ti-chevron-left"></i></button>
+                <button class="mini-cal-nav" id="mini-next"><i class="ti ti-chevron-right"></i></button>
+              </div>
+            </div>
+            <div class="mini-cal-grid" id="mini-cal-grid"></div>
+          </div>
+
+          <div class="proximos-eventos">
+            <div class="proximos-eventos-titulo">Esta semana</div>
+            <div id="proximos-lista"></div>
+          </div>
+
+        </div>
+
+        <!-- GRADE SEMANAL -->
+        <div class="agenda-grade-wrapper">
+
+          <div class="agenda-grade-header" id="agenda-grade-header">
+            <div class="agenda-grade-header-vazio"></div>
+            <!-- dias gerados por JS -->
+          </div>
+
+          <div class="agenda-grade-corpo">
+            <div class="agenda-grade-scroll" id="agenda-grade-scroll">
+              <!-- horas + colunas geradas por JS -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- OVERLAY SIDEBAR -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<!-- MODAL NOVO EVENTO -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-titulo">Novo Evento</span>
+      <button class="modal-fechar" id="modal-fechar"><i class="ti ti-x"></i></button>
+    </div>
+
+    <div class="modal-campo">
+      <label class="modal-label">Nome do evento</label>
+      <input class="modal-input" id="modal-nome" type="text" placeholder="Ex: Reunião com cliente">
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div class="modal-campo">
+        <label class="modal-label">Data</label>
+        <input class="modal-input" id="modal-data" type="date">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Horário</label>
+        <input class="modal-input" id="modal-hora" type="time" value="09:00">
+      </div>
+    </div>
+
+    <div class="modal-campo">
+      <label class="modal-label">Duração (minutos)</label>
+      <input class="modal-input" id="modal-duracao" type="number" value="60" min="15" step="15">
+    </div>
+
+    <div class="modal-campo">
+      <label class="modal-label">Cor</label>
+      <div class="modal-cores" id="modal-cores">
+        <div class="modal-cor selecionada" data-cor="verde"   style="background:#eaf3de;border:2px solid #4a7c35;"></div>
+        <div class="modal-cor" data-cor="azul"    style="background:#e6f1fb;border:2px solid #185fa5;"></div>
+        <div class="modal-cor" data-cor="amarelo" style="background:#faeeda;border:2px solid #854f0b;"></div>
+        <div class="modal-cor" data-cor="teal"    style="background:#e1f5ee;border:2px solid #0f6e56;"></div>
+        <div class="modal-cor" data-cor="rosa"    style="background:#fce8f3;border:2px solid #8b3a62;"></div>
+      </div>
+    </div>
+
+    <div class="modal-acoes">
+      <button class="btn-cancelar" id="btn-cancelar">Cancelar</button>
+      <button class="btn-salvar" id="btn-salvar">Salvar evento</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================================================
+// DADOS
+// ================================================
+
+const DIAS_SEMANA  = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+const MESES        = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const HORAS        = Array.from({length:13}, (_,i) => i + 7); // 7h às 19h
+
+// Eventos de exemplo
+let eventos = [
+  { id:1, nome:'Visita ao cliente — Alpha Ltda', data:'2026-06-08', hora:'09:00', duracao:60,  cor:'verde' },
+  { id:2, nome:'Reunião de briefing', data:'2026-06-09', hora:'10:00', duracao:90,  cor:'azul' },
+  { id:3, nome:'Aprovação de projeto', data:'2026-06-10', hora:'14:00', duracao:60,  cor:'amarelo' },
+  { id:4, nome:'Apresentação Galeria Moderna', data:'2026-06-11', hora:'09:30', duracao:120, cor:'teal' },
+  { id:5, nome:'Entrega de maquete', data:'2026-06-11', hora:'16:00', duracao:60,  cor:'rosa' },
+  { id:6, nome:'Revisão de contrato', data:'2026-06-12', hora:'11:00', duracao:60,  cor:'azul' },
+  { id:7, nome:'Workshop interno', data:'2026-06-13', hora:'09:00', duracao:180, cor:'verde' },
+];
+
+let corSelecionada = 'verde';
+let hoje = new Date();
+let semanaAtual = getMondaySemana(hoje);
+let miniMes = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+
+// ================================================
+// UTILITÁRIOS
+// ================================================
+
+function getMondaySemana(d) {
+  const dia = new Date(d);
+  const dow = dia.getDay(); // 0=dom
+  const diff = dow === 0 ? -6 : 1 - dow;
+  dia.setDate(dia.getDate() + diff);
+  dia.setHours(0,0,0,0);
+  return dia;
+}
+
+function addDias(d, n) {
+  const r = new Date(d);
+  r.setDate(r.getDate() + n);
+  return r;
+}
+
+function toISO(d) {
+  return d.toISOString().slice(0,10);
+}
+
+function hhmm(str) {
+  const [h,m] = str.split(':').map(Number);
+  return h * 60 + m;
+}
+
+// ================================================
+// TOPBAR DATE
+// ================================================
+
+(function() {
+  const el = document.getElementById('topbar-date');
+  const opts = { weekday:'long', day:'2-digit', month:'long' };
+  el.textContent = hoje.toLocaleDateString('pt-BR', opts);
+})();
+
+// ================================================
+// GRADE SEMANAL
+// ================================================
+
+function renderSemana() {
+  const header = document.getElementById('agenda-grade-header');
+  const scroll = document.getElementById('agenda-grade-scroll');
+
+  // Limpa
+  header.innerHTML = '<div class="agenda-grade-header-vazio"></div>';
+  scroll.innerHTML = '';
+
+  // Dias da semana (seg a dom)
+  const dias = Array.from({length:7}, (_,i) => addDias(semanaAtual, i));
+
+  // Atualiza título
+  const ini = dias[0], fim = dias[6];
+  const mesIni = MESES[ini.getMonth()], mesFim = MESES[fim.getMonth()];
+  document.getElementById('agenda-mes-atual').textContent =
+    mesIni === mesFim
+      ? `${mesIni} ${ini.getFullYear()}`
+      : `${mesIni} — ${mesFim} ${fim.getFullYear()}`;
+
+  // Header dos dias
+  dias.forEach(d => {
+    const isHoje = toISO(d) === toISO(hoje);
+    const col = document.createElement('div');
+    col.className = 'agenda-dia-col' + (isHoje ? ' agenda-dia-col--hoje' : '');
+    col.innerHTML = `
+      <div class="agenda-dia-nome">${DIAS_SEMANA[d.getDay()]}</div>
+      <div class="agenda-dia-numero">${d.getDate()}</div>
+    `;
+    header.appendChild(col);
+  });
+
+  // Coluna de horas
+  const colHoras = document.createElement('div');
+  colHoras.className = 'agenda-horas';
+  HORAS.forEach(h => {
+    const label = document.createElement('div');
+    label.className = 'agenda-hora-label';
+    label.textContent = `${h}h`;
+    colHoras.appendChild(label);
+  });
+  scroll.appendChild(colHoras);
+
+  // Colunas dos dias
+  dias.forEach(d => {
+    const isHoje = toISO(d) === toISO(hoje);
+    const col = document.createElement('div');
+    col.className = 'agenda-col-dia' + (isHoje ? ' agenda-col-dia--hoje' : '');
+    col.dataset.data = toISO(d);
+
+    // Slots
+    HORAS.forEach(() => {
+      const slot = document.createElement('div');
+      slot.className = 'agenda-slot';
+      col.appendChild(slot);
+    });
+
+    // Linha do horário atual (só na coluna de hoje)
+    if (isHoje) {
+      const agora = new Date();
+      const minutos = agora.getHours() * 60 + agora.getMinutes();
+      const topo = ((minutos - 7 * 60) / 60) * 60; // px
+      if (topo >= 0) {
+        const linha = document.createElement('div');
+        linha.className = 'agenda-linha-atual';
+        linha.style.top = `${topo}px`;
+        col.appendChild(linha);
+      }
+    }
+
+    // Eventos do dia
+    const evsDia = eventos.filter(e => e.data === toISO(d));
+    evsDia.forEach(ev => renderEvento(ev, col));
+
+    scroll.appendChild(col);
+  });
+
+  // Scroll para início do dia
+  const corpo = document.querySelector('.agenda-grade-corpo');
+  if (corpo) corpo.scrollTop = 2 * 60; // 2h * 60px = 120px (mostra a partir das 9h)
+
+  renderProximos(dias);
+}
+
+function renderEvento(ev, col) {
+  const inicio = hhmm(ev.hora);
+  const fim    = inicio + ev.duracao;
+  const topoMin = inicio - 7 * 60;
+  if (topoMin < 0) return;
+
+  const el = document.createElement('div');
+  el.className = `evento evento--${ev.cor}`;
+  el.style.top    = `${(topoMin / 60) * 60}px`;
+  el.style.height = `${(ev.duracao / 60) * 60 - 4}px`;
+  el.innerHTML = `
+    <span class="evento-hora">${ev.hora}</span>
+    <span class="evento-nome">${ev.nome}</span>
+  `;
+  el.addEventListener('click', () => abrirModalEditar(ev));
+  col.appendChild(el);
+}
+
+// ================================================
+// PRÓXIMOS EVENTOS (lateral)
+// ================================================
+
+function renderProximos(dias) {
+  const lista = document.getElementById('proximos-lista');
+  lista.innerHTML = '';
+  const isos = dias.map(toISO);
+  const evsSemana = eventos
+    .filter(e => isos.includes(e.data))
+    .sort((a,b) => (a.data + a.hora).localeCompare(b.data + b.hora));
+
+  if (!evsSemana.length) {
+    lista.innerHTML = '<p style="font-size:11px;color:var(--texto-mudo);padding:8px 0;">Nenhum evento esta semana.</p>';
+    return;
+  }
+
+  const cores = { verde:'#4a7c35', azul:'#185fa5', amarelo:'#854f0b', teal:'#0f6e56', rosa:'#8b3a62' };
+
+  evsSemana.forEach(ev => {
+    const d = new Date(ev.data + 'T00:00');
+    const item = document.createElement('div');
+    item.className = 'proximo-item';
+    item.innerHTML = `
+      <div class="proximo-item-cor" style="background:${cores[ev.cor]};min-height:36px;"></div>
+      <div class="proximo-item-info">
+        <div class="proximo-item-nome">${ev.nome}</div>
+        <div class="proximo-item-hora">${DIAS_SEMANA[d.getDay()]}, ${ev.hora}</div>
+      </div>
+    `;
+    lista.appendChild(item);
+  });
+}
+
+// ================================================
+// MINI CALENDÁRIO
+// ================================================
+
+function renderMiniCal() {
+  const grid  = document.getElementById('mini-cal-grid');
+  const titulo = document.getElementById('mini-cal-titulo');
+  titulo.textContent = `${MESES[miniMes.getMonth()].slice(0,3)} ${miniMes.getFullYear()}`;
+  grid.innerHTML = '';
+
+  // Labels
+  ['D','S','T','Q','Q','S','S'].forEach(l => {
+    const el = document.createElement('div');
+    el.className = 'mini-cal-dia-label';
+    el.textContent = l;
+    grid.appendChild(el);
+  });
+
+  const primeiro = new Date(miniMes.getFullYear(), miniMes.getMonth(), 1);
+  const ultimo   = new Date(miniMes.getFullYear(), miniMes.getMonth() + 1, 0);
+  const inicioGrid = new Date(primeiro);
+  inicioGrid.setDate(inicioGrid.getDate() - primeiro.getDay());
+
+  for (let i = 0; i < 42; i++) {
+    const d = new Date(inicioGrid);
+    d.setDate(d.getDate() + i);
+    const el = document.createElement('div');
+    const outroMes = d.getMonth() !== miniMes.getMonth();
+    const isHoje   = toISO(d) === toISO(hoje);
+    el.className = 'mini-cal-dia'
+      + (outroMes ? ' mini-cal-dia--outro-mes' : '')
+      + (isHoje   ? ' mini-cal-dia--hoje' : '');
+    el.textContent = d.getDate();
+    el.addEventListener('click', () => {
+      semanaAtual = getMondaySemana(d);
+      renderSemana();
+    });
+    grid.appendChild(el);
+  }
+}
+
+// ================================================
+// NAVEGAÇÃO
+// ================================================
+
+document.getElementById('btn-anterior').addEventListener('click', () => {
+  semanaAtual = addDias(semanaAtual, -7);
+  renderSemana();
+});
+
+document.getElementById('btn-proximo').addEventListener('click', () => {
+  semanaAtual = addDias(semanaAtual, 7);
+  renderSemana();
+});
+
+document.getElementById('btn-hoje').addEventListener('click', () => {
+  semanaAtual = getMondaySemana(hoje);
+  renderSemana();
+});
+
+document.getElementById('mini-prev').addEventListener('click', () => {
+  miniMes.setMonth(miniMes.getMonth() - 1);
+  renderMiniCal();
+});
+
+document.getElementById('mini-next').addEventListener('click', () => {
+  miniMes.setMonth(miniMes.getMonth() + 1);
+  renderMiniCal();
+});
+
+// Toggle de view (visual apenas)
+document.querySelectorAll('.agenda-view-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.agenda-view-btn').forEach(b => b.classList.remove('agenda-view-btn--active'));
+    btn.classList.add('agenda-view-btn--active');
+  });
+});
+
+// ================================================
+// MODAL
+// ================================================
+
+function abrirModal(dataISO) {
+  document.getElementById('modal-nome').value = '';
+  document.getElementById('modal-data').value = dataISO || toISO(hoje);
+  document.getElementById('modal-hora').value = '09:00';
+  document.getElementById('modal-duracao').value = '60';
+  document.querySelectorAll('.modal-cor').forEach(c => c.classList.remove('selecionada'));
+  document.querySelector('[data-cor="verde"]').classList.add('selecionada');
+  corSelecionada = 'verde';
+  document.getElementById('modal-overlay').classList.add('active');
+}
+
+function abrirModalEditar(ev) {
+  document.getElementById('modal-nome').value = ev.nome;
+  document.getElementById('modal-data').value = ev.data;
+  document.getElementById('modal-hora').value = ev.hora;
+  document.getElementById('modal-duracao').value = ev.duracao;
+  document.querySelectorAll('.modal-cor').forEach(c => c.classList.remove('selecionada'));
+  document.querySelector(`[data-cor="${ev.cor}"]`).classList.add('selecionada');
+  corSelecionada = ev.cor;
+  document.getElementById('modal-overlay').classList.add('active');
+}
+
+function fecharModal() {
+  document.getElementById('modal-overlay').classList.remove('active');
+}
+
+document.getElementById('btn-novo-evento').addEventListener('click', () => abrirModal());
+document.getElementById('modal-fechar').addEventListener('click', fecharModal);
+document.getElementById('btn-cancelar').addEventListener('click', fecharModal);
+document.getElementById('modal-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal-overlay')) fecharModal();
+});
+
+// Seleção de cor
+document.getElementById('modal-cores').addEventListener('click', e => {
+  const cor = e.target.closest('.modal-cor');
+  if (!cor) return;
+  document.querySelectorAll('.modal-cor').forEach(c => c.classList.remove('selecionada'));
+  cor.classList.add('selecionada');
+  corSelecionada = cor.dataset.cor;
+});
+
+// Salvar evento
+document.getElementById('btn-salvar').addEventListener('click', () => {
+  const nome = document.getElementById('modal-nome').value.trim();
+  if (!nome) { document.getElementById('modal-nome').focus(); return; }
+  eventos.push({
+    id: Date.now(),
+    nome,
+    data:     document.getElementById('modal-data').value,
+    hora:     document.getElementById('modal-hora').value,
+    duracao:  parseInt(document.getElementById('modal-duracao').value) || 60,
+    cor:      corSelecionada,
+  });
+  fecharModal();
+  renderSemana();
+});
+
+// Clique no slot para abrir modal com data
+document.getElementById('agenda-grade-scroll').addEventListener('click', e => {
+  const col = e.target.closest('.agenda-col-dia');
+  if (!col || e.target.closest('.evento')) return;
+  abrirModal(col.dataset.data);
+});
+
+// ================================================
+// MENU MOBILE
+// ================================================
+
+const menuBtn  = document.getElementById('menu-mobile-btn');
+const sidebar  = document.getElementById('sidebar');
+const overlay  = document.getElementById('sidebar-overlay');
+
+menuBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('active');
+});
+
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('active');
+});
+
+// ================================================
+// INIT
+// ================================================
+
+renderMiniCal();
+renderSemana();
+</script>
+
+</body>
+</html>

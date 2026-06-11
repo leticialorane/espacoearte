@@ -4,8 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Espaço &amp; Arte — Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- CSS EXCLUSIVO desta página -->
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="responsividade.css">
+
+  <!-- Ícones Tabler -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
   <script src="dashboard.js" defer></script>
 </head>
@@ -17,15 +29,15 @@
   <aside class="sidebar">
     <div class="sidebar-brand">
       <h1>Espaço &amp;<br>Arte</h1>
-      <p>Painel Admin</p>
+      <p>Painel Administrativo</p>
     </div>
 
     <nav class="sidebar-nav">
       <span class="sidebar-nav-label">Menu</span>
-      <a href="#" class="sidebar-nav-item sidebar-nav-item--active">
+      <a href="dashboard.html" class="sidebar-nav-item sidebar-nav-item--active">
         <i class="ti ti-layout-dashboard" aria-hidden="true"></i> Dashboard
       </a>
-      <a href="#" class="sidebar-nav-item">
+      <a href="clientes.html" class="sidebar-nav-item">
         <i class="ti ti-users" aria-hidden="true"></i> Clientes
       </a>
       <a href="#" class="sidebar-nav-item">
@@ -50,15 +62,18 @@
   <!-- ========== Main ========== -->
   <div class="main">
 
-    <!-- Topbar -->
     <header class="topbar">
       <div class="topbar-left">
-        <h2>Dashboard</h2>
-        <p>Visão geral do desempenho e atividades da Espaço &amp; Arte.</p>
+        <button class="menu-mobile" aria-label="Abrir menu">
+          <i class="ti ti-menu-2"></i>
+        </button>
+        <div>
+          <h2>Dashboard</h2>
+          <p>Visão geral do desempenho e atividades da Espaço &amp; Arte.</p>
+        </div>
       </div>
       <div class="topbar-right">
         <span id="topbar-date" class="topbar-date"></span>
-        <div class="topbar-avatar">EA</div>
       </div>
     </header>
 
@@ -121,7 +136,6 @@
       <!-- ---- Linha 2: Gráficos ---- -->
       <div class="graficos-linha">
 
-        <!-- Gráfico de linha: faturamento -->
         <div id="card-grafico-faturamento" class="card-grafico">
           <div class="card-grafico-titulo">Evolução do Faturamento</div>
           <div class="card-grafico-area">
@@ -129,7 +143,6 @@
           </div>
         </div>
 
-        <!-- Gráfico de barras: atendimentos -->
         <div id="card-grafico-atendimentos" class="card-grafico">
           <div class="card-grafico-titulo">Atendimentos por Serviço</div>
           <div class="card-barras">
@@ -182,7 +195,6 @@
       <!-- ---- Linha 3: Atividades + Resumo ---- -->
       <div class="info-linha">
 
-        <!-- Card: Atividades Recentes -->
         <div id="card-atividades" class="card-info">
           <div class="card-info-titulo">Atividades Recentes</div>
           <div class="card-atividades-lista">
@@ -230,7 +242,6 @@
           </div>
         </div>
 
-        <!-- Card: Resumo do Mês -->
         <div id="card-resumo-mes" class="card-info">
           <div class="card-info-titulo">Resumo do Mês</div>
           <div class="card-resumo-lista">
@@ -262,6 +273,24 @@
     </main>
   </div>
 </div>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<script>
+  const menuBtn = document.querySelector('.menu-mobile');
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+
+  menuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+  });
+
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+</script>
 
 </body>
 </html>

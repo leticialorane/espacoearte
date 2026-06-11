@@ -1,0 +1,188 @@
+/* ================================================
+   RESPONSIVIDADE.CSS
+   Media queries de todas as páginas do projeto
+   ================================================ */
+
+
+/* ================================================
+   COMPARTILHADO (sidebar, topbar, menu-mobile,
+   kpi-grid, page-content)
+   ================================================ */
+
+.menu-mobile {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-mobile i {
+  font-size: 24px;
+  color: #2D3B2E;
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  /* Esconde a sidebar por padrão no mobile */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 9999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    z-index: 9998;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  /* O main ocupa a tela toda */
+  .main {
+    width: 100%;
+  }
+
+  .menu-mobile {
+    display: block;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-content {
+    padding: 16px;
+  }
+
+  /* KPI: texto não transborda */
+  .card-kpi-value {
+    font-size: 18px;
+  }
+
+  .card-kpi-label {
+    font-size: 9px;
+  }
+
+  /* Topbar mais compacta */
+  .topbar {
+    padding: 14px 16px;
+  }
+
+  .topbar-left h2 {
+    font-size: 18px;
+  }
+
+  .topbar-left p {
+    display: none;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .kpi-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+/* ================================================
+   DASHBOARD
+   ================================================ */
+
+@media (max-width: 768px) {
+
+  .graficos-linha {
+    grid-template-columns: 1fr;
+  }
+
+  .info-linha {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ================================================
+   AGENDA
+   ================================================ */
+
+@media (max-width: 900px) {
+
+  .agenda-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .agenda-lateral {
+    display: none;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .agenda-controles {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .agenda-controles-direita {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .agenda-mes-atual {
+    font-size: 16px;
+    min-width: unset;
+  }
+
+}
+
+
+/* ================================================
+   CLIENTES
+   ================================================ */
+
+@media (max-width: 768px) {
+
+  .clientes-busca {
+    width: 200px;
+  }
+
+  .clientes-tabela th:nth-child(2),
+  .clientes-tabela td:nth-child(2),
+  .clientes-tabela th:nth-child(3),
+  .clientes-tabela td:nth-child(3) {
+    display: none;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .clientes-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+}
