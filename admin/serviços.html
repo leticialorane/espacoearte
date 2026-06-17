@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espaço &amp; Arte — Serviços</title>
+
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="responsividade.css" />
+  <link rel="stylesheet" href="serviços.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="serviços.js" defer></script>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ========== Sidebar ========== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <h1>Espaço &amp;<br>Arte</h1>
+      <p>Painel Administrativo</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="sidebar-nav-label">Menu</span>
+      <a href="dashboard.html" class="sidebar-nav-item">
+        <i class="ti ti-layout-dashboard" aria-hidden="true"></i> Dashboard
+      </a>
+      <a href="clientes.html" class="sidebar-nav-item">
+        <i class="ti ti-users" aria-hidden="true"></i> Clientes
+      </a>
+      <a href="servicos.html" class="sidebar-nav-item sidebar-nav-item--active">
+        <i class="ti ti-briefcase" aria-hidden="true"></i> Serviços
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-calendar" aria-hidden="true"></i> Agenda
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="ti ti-file-text" aria-hidden="true"></i> Currículos
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="sidebar-footer-email">exemplo@gmail.com</span>
+      <button class="sidebar-footer-logout">
+        <i class="ti ti-logout" aria-hidden="true"></i> Sair
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========== Main ========== -->
+  <div class="main">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-mobile" id="menu-mobile-btn" aria-label="Abrir menu">
+          <i class="ti ti-menu-2"></i>
+        </button>
+        <div>
+          <h2>Serviços</h2>
+          <p>Gerencie os serviços oferecidos pela Espaço &amp; Arte.</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button id="btn-novo-servico" class="btn-primario">
+          <i class="ti ti-plus" aria-hidden="true"></i> Novo Serviço
+        </button>
+      </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="page-content">
+
+      <!-- Filtros -->
+      <div class="servicos-filtros">
+        <div class="servicos-busca">
+          <i class="ti ti-search" aria-hidden="true"></i>
+          <input id="input-busca" type="text" placeholder="Buscar serviço..." />
+        </div>
+        <div class="servicos-filtro-grupo">
+          <select id="filtro-categoria">
+            <option value="">Todas as categorias</option>
+            <option value="obras">Obras</option>
+            <option value="moveis">Móveis</option>
+            <option value="projetos">Projetos</option>
+            <option value="consultoria">Consultoria</option>
+          </select>
+          <select id="filtro-status">
+            <option value="">Todos os status</option>
+            <option value="ativo">Ativo</option>
+            <option value="inativo">Inativo</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Contagem -->
+      <div class="servicos-contagem">
+        <span id="texto-contagem">Carregando...</span>
+      </div>
+
+      <!-- Grid de cards -->
+      <div id="servicos-grid" class="servicos-grid"></div>
+
+      <!-- Estado vazio -->
+      <div id="servicos-vazio" class="servicos-vazio" style="display: none;">
+        <i class="ti ti-briefcase-off" aria-hidden="true"></i>
+        <p>Nenhum serviço encontrado.</p>
+        <span>Tente ajustar os filtros ou cadastre um novo serviço.</span>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<!-- ========== Modal: Cadastrar / Editar ========== -->
+<div id="modal-servico" class="modal-fundo" style="display: none;">
+  <div class="modal-caixa">
+
+    <div class="modal-cabecalho">
+      <h3 id="modal-titulo">Novo Serviço</h3>
+      <button id="btn-fechar-modal" class="modal-fechar">
+        <i class="ti ti-x" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <form id="form-servico" class="modal-form" novalidate>
+      <input type="hidden" id="campo-id" />
+
+      <div class="campo-grupo">
+        <label for="campo-nome">Nome do serviço <span class="campo-obrigatorio">*</span></label>
+        <input id="campo-nome" type="text" placeholder="Ex: Assessoria em Obras" required />
+        <span class="campo-erro" id="erro-nome"></span>
+      </div>
+
+      <div class="campo-grupo">
+        <label for="campo-descricao">Descrição <span class="campo-obrigatorio">*</span></label>
+        <textarea id="campo-descricao" rows="3" placeholder="Descreva o serviço oferecido..." required></textarea>
+        <span class="campo-erro" id="erro-descricao"></span>
+      </div>
+
+      <div class="modal-form-linha">
+        <div class="campo-grupo">
+          <label for="campo-preco">Preço (R$) <span class="campo-obrigatorio">*</span></label>
+          <input id="campo-preco" type="number" min="0" step="0.01" placeholder="0,00" required />
+          <span class="campo-erro" id="erro-preco"></span>
+        </div>
+        <div class="campo-grupo">
+          <label for="campo-categoria">Categoria <span class="campo-obrigatorio">*</span></label>
+          <select id="campo-categoria" required>
+            <option value="">Selecione...</option>
+            <option value="obras">Obras</option>
+            <option value="moveis">Móveis</option>
+            <option value="projetos">Projetos</option>
+            <option value="consultoria">Consultoria</option>
+          </select>
+          <span class="campo-erro" id="erro-categoria"></span>
+        </div>
+      </div>
+
+      <div class="campo-grupo">
+        <label>Status</label>
+        <div class="campo-toggle">
+          <input id="campo-status" type="checkbox" checked />
+          <label for="campo-status" class="toggle-label">
+            <span class="toggle-trilha"></span>
+            <span id="toggle-texto">Ativo</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-acoes">
+        <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
+        <button type="submit" id="btn-salvar" class="btn-primario">Salvar Serviço</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<!-- ========== Modal: Confirmar Exclusão ========== -->
+<div id="modal-excluir" class="modal-fundo" style="display: none;">
+  <div class="modal-caixa modal-caixa--pequeno">
+
+    <div class="modal-cabecalho">
+      <h3>Excluir Serviço</h3>
+      <button id="btn-fechar-modal-excluir" class="modal-fechar">
+        <i class="ti ti-x" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="modal-excluir-corpo">
+      <div class="modal-excluir-icone">
+        <i class="ti ti-alert-triangle" aria-hidden="true"></i>
+      </div>
+      <p>Tem certeza que deseja excluir o serviço <strong id="nome-servico-excluir"></strong>?</p>
+      <span>Essa ação não pode ser desfeita.</span>
+    </div>
+
+    <div class="modal-acoes">
+      <button id="btn-cancelar-excluir" class="btn-secundario">Cancelar</button>
+      <button id="btn-confirmar-excluir" class="btn-perigo">Excluir</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menu-mobile-btn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+
+  menuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+  });
+
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+</script>
+
+</body>
+</html>

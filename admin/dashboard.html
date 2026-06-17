@@ -26,7 +26,7 @@
 <div class="layout">
 
   <!-- ========== Sidebar ========== -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
       <h1>Espaço &amp;<br>Arte</h1>
       <p>Painel Administrativo</p>
@@ -64,7 +64,7 @@
 
     <header class="topbar">
       <div class="topbar-left">
-        <button class="menu-mobile" aria-label="Abrir menu">
+        <button class="menu-mobile" id="menu-mobile-btn" aria-label="Abrir menu">
           <i class="ti ti-menu-2"></i>
         </button>
         <div>
@@ -277,8 +277,8 @@
 <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
 <script>
-  const menuBtn = document.querySelector('.menu-mobile');
-  const sidebar = document.querySelector('.sidebar');
+  const menuBtn = document.getElementById('menu-mobile-btn') || document.querySelector('.menu-mobile');
+  const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('sidebar-overlay');
 
   menuBtn.addEventListener('click', () => {

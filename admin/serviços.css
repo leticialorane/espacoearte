@@ -1,0 +1,531 @@
+/* ================================================
+   SERVICOS.CSS
+   Estilos exclusivos da página de serviços.
+   Depende das variáveis e classes base do dashboard.css
+   ================================================ */
+
+/* ================================================
+   BOTÕES
+   ================================================ */
+
+.btn-primario {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background: var(--verde-medio);
+  color: var(--branco);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-primario:hover { background: #3d6b2c; }
+
+.btn-secundario {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background: var(--creme-suave);
+  color: var(--texto-secundario);
+  border: 1px solid var(--creme-borda);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-secundario:hover { background: var(--creme-borda); }
+
+.btn-perigo {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background: var(--vermelho-texto);
+  color: var(--branco);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-perigo:hover { background: #9e3535; }
+
+/* ================================================
+   FILTROS
+   ================================================ */
+
+.servicos-filtros {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.servicos-busca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--branco);
+  border: 1px solid #E8E2D8;
+  border-radius: 10px;
+  padding: 9px 14px;
+  flex: 1;
+  min-width: 200px;
+  transition: border-color 0.2s ease;
+}
+
+.servicos-busca:focus-within {
+  border-color: var(--verde-claro);
+}
+
+.servicos-busca i {
+  color: var(--texto-mudo);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.servicos-busca input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: var(--texto-principal);
+  width: 100%;
+}
+
+.servicos-busca input::placeholder { color: var(--texto-mudo); }
+
+.servicos-filtro-grupo {
+  display: flex;
+  gap: 10px;
+}
+
+.servicos-filtro-grupo select {
+  background: var(--branco);
+  border: 1px solid #E8E2D8;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: var(--texto-secundario);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.servicos-filtro-grupo select:focus {
+  border-color: var(--verde-claro);
+}
+
+/* ================================================
+   CONTAGEM
+   ================================================ */
+
+.servicos-contagem {
+  font-size: 12px;
+  color: var(--texto-mudo);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ================================================
+   GRID DE CARDS DE SERVIÇO
+   ================================================ */
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* ---- Card individual ---- */
+
+.card-servico {
+  background: var(--branco);
+  border-radius: 12px;
+  border: 1px solid #E8E2D8;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: box-shadow 0.25s ease;
+}
+
+.card-servico:hover {
+  box-shadow: 0 4px 20px rgba(45, 59, 46, 0.08);
+}
+
+.card-servico-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.card-servico-nome {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--texto-principal);
+  line-height: 1.3;
+}
+
+/* Badge de status — reutiliza a lógica dos KPIs do dashboard */
+.card-servico-status {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+.card-servico-status--ativo {
+  background: var(--verde-palido);
+  color: var(--verde-medio);
+}
+
+.card-servico-status--inativo {
+  background: var(--creme-suave);
+  color: var(--texto-mudo);
+}
+
+.card-servico-descricao {
+  font-size: 12px;
+  color: var(--texto-secundario);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-servico-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #E8E2D8;
+}
+
+.card-servico-categoria {
+  font-size: 11px;
+  color: var(--texto-mudo);
+  background: var(--creme-suave);
+  padding: 3px 10px;
+  border-radius: 99px;
+  text-transform: capitalize;
+  font-family: 'Poppins', sans-serif;
+}
+
+.card-servico-preco {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--verde-medio);
+  font-family: 'Poppins', sans-serif;
+}
+
+.card-servico-acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.card-servico-btn-editar,
+.card-servico-btn-excluir {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border: none;
+}
+
+.card-servico-btn-editar {
+  background: var(--creme-suave);
+  color: var(--texto-secundario);
+}
+
+.card-servico-btn-editar:hover { background: #E8E2D8; }
+
+.card-servico-btn-excluir {
+  background: #fdf0f0;
+  color: var(--vermelho-texto);
+}
+
+.card-servico-btn-excluir:hover { background: #f9dede; }
+
+/* ================================================
+   ESTADO VAZIO
+   ================================================ */
+
+.servicos-vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  gap: 10px;
+}
+
+.servicos-vazio i {
+  font-size: 48px;
+  color: #E8E2D8;
+}
+
+.servicos-vazio p {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--texto-secundario);
+  font-family: 'Lora', serif;
+}
+
+.servicos-vazio span {
+  font-size: 12px;
+  color: var(--texto-mudo);
+}
+
+/* ================================================
+   MODAIS
+   ================================================ */
+
+.modal-fundo {
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 59, 46, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+  backdrop-filter: blur(2px);
+}
+
+.modal-caixa {
+  background: var(--branco);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 520px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: 0 20px 60px rgba(45, 59, 46, 0.15);
+}
+
+.modal-caixa--pequeno { max-width: 380px; }
+
+.modal-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-cabecalho h3 {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--texto-principal);
+}
+
+.modal-fechar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--texto-mudo);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.modal-fechar:hover { color: var(--texto-principal); }
+
+/* Formulário */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-form-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo-grupo label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--texto-secundario);
+  font-family: 'Poppins', sans-serif;
+}
+
+.campo-obrigatorio { color: var(--vermelho-texto); }
+
+.campo-grupo input,
+.campo-grupo textarea,
+.campo-grupo select {
+  background: #F8F7F3;
+  border: 1px solid #E8E2D8;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: var(--texto-principal);
+  outline: none;
+  transition: border-color 0.2s ease;
+  resize: none;
+}
+
+.campo-grupo input:focus,
+.campo-grupo textarea:focus,
+.campo-grupo select:focus {
+  border-color: var(--verde-claro);
+}
+
+.campo-grupo input.campo-invalido,
+.campo-grupo textarea.campo-invalido,
+.campo-grupo select.campo-invalido {
+  border-color: var(--vermelho-texto);
+}
+
+.campo-erro {
+  font-size: 11px;
+  color: var(--vermelho-texto);
+  min-height: 14px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Toggle de status */
+.campo-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.campo-toggle input[type="checkbox"] { display: none; }
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--texto-secundario);
+  font-family: 'Poppins', sans-serif;
+}
+
+.toggle-trilha {
+  width: 40px;
+  height: 22px;
+  background: #E8E2D8;
+  border-radius: 99px;
+  position: relative;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.toggle-trilha::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--branco);
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+#campo-status:checked + .toggle-label .toggle-trilha {
+  background: var(--verde-medio);
+}
+
+#campo-status:checked + .toggle-label .toggle-trilha::after {
+  transform: translateX(18px);
+}
+
+/* Ações do modal */
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+/* Modal de exclusão */
+.modal-excluir-corpo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.modal-excluir-icone {
+  width: 52px;
+  height: 52px;
+  background: #fdf0f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--vermelho-texto);
+}
+
+.modal-excluir-corpo p {
+  font-size: 13px;
+  color: var(--texto-principal);
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal-excluir-corpo span {
+  font-size: 12px;
+  color: var(--texto-mudo);
+}
+
+/* ================================================
+   MENU MOBILE (herdado do dashboard)
+   ================================================ */
+
+.menu-mobile {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: var(--texto-principal);
+  padding: 0;
+  line-height: 1;
+}
