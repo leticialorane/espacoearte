@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espaço & Arte — Currículos</title>
+
+  <!-- CSS EXCLUSIVO desta página -->
+  <link rel="stylesheet" href="curriculos.css">
+  <link rel="stylesheet" href="admin-responsividade.css">
+  <link rel="stylesheet" href="dashboard.css">
+
+  <!-- Ícones Tabler -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="curriculos.js" defer></script>
+
+</head>
+
+<body>
+ <!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Espaço & Arte — Currículos</title>
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="curriculos.css">
+  <link rel="stylesheet" href="curriculos-responsividade.css">
+
+  <!-- Ícones -->
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+  <!-- Fontes -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <script src="curriculos.js" defer></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar" id="sidebar">
+
+<div class="sidebar-brand">
+  <h1>Espaço &<br>Arte</h1>
+  <p>Painel Administrativo</p>
+</div>
+
+<nav class="sidebar-nav">
+
+  <span class="sidebar-nav-label">
+    Menu
+  </span>
+
+  <a href="dashboard.html" class="sidebar-nav-item">
+    <i class="ti ti-layout-dashboard"></i>
+    Dashboard
+  </a>
+
+  <a href="clientes.html" class="sidebar-nav-item">
+    <i class="ti ti-users"></i>
+    Clientes
+  </a>
+
+  <a href="servicos.html" class="sidebar-nav-item">
+    <i class="ti ti-briefcase"></i>
+    Serviços
+  </a>
+
+  <a href="agenda.html" class="sidebar-nav-item">
+    <i class="ti ti-calendar"></i>
+    Agenda
+  </a>
+
+  <a href="curriculos.html"
+     class="sidebar-nav-item sidebar-nav-item--active">
+
+    <i class="ti ti-file-text"></i>
+    Currículos
+
+  </a>
+
+</nav>
+
+<div class="sidebar-footer">
+
+  <span class="sidebar-footer-email">
+    admin@espacoearte.com
+  </span>
+
+  <button class="sidebar-footer-logout">
+    <i class="ti ti-logout"></i>
+    Sair
+  </button>
+
+</div>
+
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+
+  <div class="main">
+
+<!-- TOPBAR -->
+
+<header class="topbar">
+
+  <div class="topbar-left">
+
+    <button
+      class="menu-mobile"
+      id="menu-mobile-btn"
+      aria-label="Abrir menu">
+
+      <i class="ti ti-menu-2"></i>
+
+    </button>
+
+    <div>
+
+      <h2>Currículos</h2>
+
+      <p>
+        Gerencie currículos recebidos e acompanhe candidatos.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="topbar-right">
+
+    <span
+      id="topbar-date"
+      class="topbar-date">
+
+    </span>
+
+  </div>
+
+</header>
+
+<!-- CONTEÚDO -->
+
+<main class="page-content">
+
+  <!-- KPIS -->
+
+  <section class="curriculos-kpis">
+
+    <div class="curriculo-kpi">
+
+      <div class="curriculo-kpi-icon">
+        <i class="ti ti-file-text"></i>
+      </div>
+
+      <span>Total Recebidos</span>
+
+      <strong>24</strong>
+
+    </div>
+
+    <div class="curriculo-kpi">
+
+      <div class="curriculo-kpi-icon">
+        <i class="ti ti-clock-hour-4"></i>
+      </div>
+
+      <span>Em Análise</span>
+
+      <strong>12</strong>
+
+    </div>
+
+    <div class="curriculo-kpi">
+
+      <div class="curriculo-kpi-icon">
+        <i class="ti ti-check"></i>
+      </div>
+
+      <span>Aprovados</span>
+
+      <strong>8</strong>
+
+    </div>
+
+    <div class="curriculo-kpi">
+
+      <div class="curriculo-kpi-icon">
+        <i class="ti ti-x"></i>
+      </div>
+
+      <span>Rejeitados</span>
+
+      <strong>4</strong>
+
+    </div>
+
+  </section>
+
+  <!-- TABELA -->
+
+  <section class="curriculos-card">
+
+    <div class="curriculos-toolbar">
+
+      <div class="search-box">
+
+        <i class="ti ti-search"></i>
+
+        <input
+          type="text"
+          id="buscarCurriculo"
+          placeholder="Pesquisar candidato...">
+
+      </div>
+
+    </div>
+
+    <div class="table-wrapper">
+
+      <table class="curriculos-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Nome</th>
+
+            <th>Cargo</th>
+
+            <th>Telefone</th>
+
+            <th>Data</th>
+
+            <th>Status</th>
+
+            <th>Ações</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody id="curriculosTable">
+
+          <tr>
+
+            <td>Ana Silva</td>
+
+            <td>Designer de Interiores</td>
+
+            <td>(62) 99999-1111</td>
+
+            <td>12/06/2026</td>
+
+            <td>
+              <span class="status status-analise">
+                Em análise
+              </span>
+            </td>
+
+            <td>
+              <button class="action-btn">
+                Visualizar
+              </button>
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Carlos Mendes</td>
+
+            <td>Marceneiro</td>
+
+            <td>(62) 99999-2222</td>
+
+            <td>10/06/2026</td>
+
+            <td>
+              <span class="status status-aprovado">
+                Aprovado
+              </span>
+            </td>
+
+            <td>
+              <button class="action-btn">
+                Visualizar
+              </button>
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Fernanda Lima</td>
+
+            <td>Arquiteta</td>
+
+            <td>(62) 99999-3333</td>
+
+            <td>08/06/2026</td>
+
+            <td>
+              <span class="status status-rejeitado">
+                Rejeitado
+              </span>
+            </td>
+
+            <td>
+              <button class="action-btn">
+                Visualizar
+              </button>
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Juliana Souza</td>
+
+            <td>Projetista</td>
+
+            <td>(62) 99999-4444</td>
+
+            <td>05/06/2026</td>
+
+            <td>
+              <span class="status status-analise">
+                Em análise
+              </span>
+            </td>
+
+            <td>
+              <button class="action-btn">
+                Visualizar
+              </button>
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Ricardo Alves</td>
+
+            <td>Auxiliar Administrativo</td>
+
+            <td>(62) 99999-5555</td>
+
+            <td>02/06/2026</td>
+
+            <td>
+              <span class="status status-aprovado">
+                Aprovado
+              </span>
+            </td>
+
+            <td>
+              <button class="action-btn">
+                Visualizar
+              </button>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+</main>
+```
+
+  </div>
+
+</div>
+
+<div
+  class="sidebar-overlay"
+  id="sidebar-overlay">
+
+</div>
+
+<script>
+
+const menuBtn =
+document.getElementById('menu-mobile-btn');
+
+const sidebar =
+document.getElementById('sidebar');
+
+const overlay =
+document.getElementById('sidebar-overlay');
+
+menuBtn.addEventListener('click', () => {
+
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('active');
+
+});
+
+overlay.addEventListener('click', () => {
+
+  sidebar.classList.remove('open');
+  overlay.classList.remove('active');
+
+});
+
+const dataAtual =
+new Date().toLocaleDateString('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric'
+});
+
+const topbarDate =
+document.getElementById('topbar-date');
+
+if(topbarDate){
+  topbarDate.textContent = dataAtual;
+}
+
+</script>
+
+</body>
+</html>
+
+

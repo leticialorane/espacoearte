@@ -5,145 +5,114 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Espaço & Arte — Clientes</title>
 
-  <!-- CSS EXCLUSIVO desta página -->
   <link rel="stylesheet" href="clientes.css">
   <link rel="stylesheet" href="admin-responsividade.css">
 
-  <!-- Ícones Tabler -->
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
-  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <script src="clientes.js"></script>
-
+  <script src="clientes.js" defer></script>
 </head>
 
 <body>
 
 <div class="layout">
 
-  <!-- SIDEBAR -->
+  <!-- ========== Sidebar ========== -->
   <aside class="sidebar" id="sidebar">
-
     <div class="sidebar-brand">
-      <h1>Espaço &<br>Arte</h1>
+      <h1>Espaço &amp;<br>Arte</h1>
       <p>Painel Administrativo</p>
     </div>
 
     <nav class="sidebar-nav">
-
       <span class="sidebar-nav-label">Menu</span>
 
       <a href="dashboard.html" class="sidebar-nav-item">
-        <i class="ti ti-layout-dashboard"></i>
-        Dashboard
+        <i class="ti ti-layout-dashboard"></i> Dashboard
       </a>
-
       <a href="clientes.html" class="sidebar-nav-item sidebar-nav-item--active">
-        <i class="ti ti-users"></i>
-        Clientes
+        <i class="ti ti-users"></i> Clientes
       </a>
-
-      <a href="#" class="sidebar-nav-item">
-        <i class="ti ti-briefcase"></i>
-        Serviços
+      <a href="servicos.html" class="sidebar-nav-item">
+        <i class="ti ti-briefcase"></i> Serviços
       </a>
-
-      <a href="#" class="sidebar-nav-item">
-        <i class="ti ti-calendar"></i>
-        Agenda
+      <a href="agenda.html" class="sidebar-nav-item">
+        <i class="ti ti-calendar"></i> Agenda
       </a>
-
-      <a href="#" class="sidebar-nav-item">
-        <i class="ti ti-file-text"></i>
-        Currículos
+      <a href="curriculos.html" class="sidebar-nav-item">
+        <i class="ti ti-file-text"></i> Currículos
       </a>
-
     </nav>
 
     <div class="sidebar-footer">
-      <span class="sidebar-footer-email">exemplo@gmail.com</span>
+      <span class="sidebar-footer-email">admin@espacoearte.com</span>
       <button class="sidebar-footer-logout">
-        <i class="ti ti-logout"></i>
-        Sair
+        <i class="ti ti-logout"></i> Sair
       </button>
     </div>
-
   </aside>
 
-  <!-- MAIN -->
+  <!-- ========== Main ========== -->
   <div class="main">
 
-</header>
+    <!-- Topbar branca -->
+    <header class="topbar">
+      <button class="menu-mobile" id="menu-mobile-btn" aria-label="Abrir menu">
+        <i class="ti ti-menu-2"></i>
+      </button>
 
-    <!-- CONTEÚDO -->
-    <main class="page-content">
-
-      <!-- CABEÇALHO -->
       <div class="clientes-header">
         <div>
           <h2 class="clientes-titulo">Clientes</h2>
-          <p class="clientes-subtitulo">
-            Gerencie empresas e pessoas que contratam a Espaço & Arte.
-          </p>
+          <p class="clientes-subtitulo">Gerencie empresas e pessoas que contratam a Espaço &amp; Arte.</p>
         </div>
-
         <button class="btn-novo-cliente">
-          <i class="ti ti-plus"></i>
-          Novo Cliente
+          <i class="ti ti-plus"></i> Novo Cliente
         </button>
       </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="page-content">
 
       <!-- KPIs -->
       <div class="kpi-grid">
-
         <div class="card-kpi">
           <div class="card-kpi-label">Total de Clientes</div>
           <div class="card-kpi-value">156</div>
         </div>
-
         <div class="card-kpi">
           <div class="card-kpi-label">Clientes Ativos</div>
           <div class="card-kpi-value">112</div>
         </div>
-
         <div class="card-kpi">
           <div class="card-kpi-label">Novos este mês</div>
           <div class="card-kpi-value">8</div>
         </div>
-
         <div class="card-kpi">
           <div class="card-kpi-label">Inativos</div>
           <div class="card-kpi-value">44</div>
         </div>
-
       </div>
 
-      <!-- TABELA -->
+      <!-- Tabela -->
       <div class="card-info">
 
-        <!-- FILTROS -->
         <div class="clientes-filtros">
-
           <div class="clientes-busca">
             <i class="ti ti-search"></i>
             <input type="text" placeholder="Buscar por nome ou e-mail...">
           </div>
-
           <button class="btn-filtro">
-            <i class="ti ti-filter"></i>
-            Filtrar
+            <i class="ti ti-filter"></i> Filtrar
           </button>
-
         </div>
 
-        <!-- TABELA -->
         <table class="clientes-tabela">
-
           <thead>
             <tr>
               <th>Cliente</th>
@@ -153,9 +122,7 @@
               <th>Ações</th>
             </tr>
           </thead>
-
           <tbody>
-
             <tr>
               <td>
                 <strong>Empresa Alpha Ltda</strong>
@@ -170,7 +137,6 @@
                 <i class="ti ti-dots-vertical"></i>
               </td>
             </tr>
-
             <tr>
               <td>
                 <strong>Galeria Moderna</strong>
@@ -185,7 +151,6 @@
                 <i class="ti ti-dots-vertical"></i>
               </td>
             </tr>
-
             <tr>
               <td>
                 <strong>Roberto Dias</strong>
@@ -200,7 +165,6 @@
                 <i class="ti ti-dots-vertical"></i>
               </td>
             </tr>
-
             <tr>
               <td>
                 <strong>Instituto Cultural</strong>
@@ -215,32 +179,30 @@
                 <i class="ti ti-dots-vertical"></i>
               </td>
             </tr>
-
           </tbody>
-
         </table>
 
       </div>
 
     </main>
-
   </div>
-
 </div>
 
 <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
 <script>
-  const menuBtn = document.getElementById('menu-mobile-btn') || document.querySelector('.menu-mobile');
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('sidebar-overlay');
+  var menuBtn = document.getElementById('menu-mobile-btn');
+  var sidebar = document.getElementById('sidebar');
+  var overlay = document.getElementById('sidebar-overlay');
 
-  menuBtn.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
-    overlay.classList.toggle('active');
-  });
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+    });
+  }
 
-  overlay.addEventListener('click', () => {
+  overlay.addEventListener('click', function () {
     sidebar.classList.remove('open');
     overlay.classList.remove('active');
   });

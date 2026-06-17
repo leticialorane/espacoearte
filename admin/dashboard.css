@@ -516,4 +516,9 @@ html, body {
   color: var(--texto-principal);
 }
 
-/* responsividade em responsividade.css */
+.menu-mobile{
+  display:none !important;
+  background:none;
+  border:none;
+  padding:0;
+}

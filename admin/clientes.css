@@ -1,5 +1,5 @@
 /* ================================================
-   CLIENTES.CSS — exclusivo para cliente.html
+   CLIENTES.CSS — exclusivo para clientes.html
    ================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@400;500;600&display=swap');
@@ -83,8 +83,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Brand */
-
 .sidebar-brand {
   padding: 28px 22px 24px;
   border-bottom: 1px solid #E8E2D8;
@@ -105,8 +103,6 @@ html, body {
   text-transform: uppercase;
   margin-top: 4px;
 }
-
-/* Navegação */
 
 .sidebar-nav {
   padding: 20px 12px 8px;
@@ -146,21 +142,11 @@ html, body {
   color: #2D3B2E;
 }
 
-.sidebar-nav-item:hover i {
-  color: #2D3B2E;
-}
-
 .sidebar-nav-item--active {
   background: #c4cfb8;
   color: #2D3B2E;
   font-weight: 600;
 }
-
-.sidebar-nav-item--active i {
-  color: #2D3B2E;
-}
-
-/* Footer */
 
 .sidebar-footer {
   margin-top: auto;
@@ -192,67 +178,71 @@ html, body {
   transition: color 0.2s ease;
 }
 
-.sidebar-footer-logout i {
-  font-size: 15px;
-}
+.sidebar-footer-logout i { font-size: 15px; }
+.sidebar-footer-logout:hover { color: #2D3B2E; }
 
-.sidebar-footer-logout:hover {
-  color: #2D3B2E;
+/* Overlay mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 99;
 }
+.sidebar-overlay.active { display: block; }
 
 /* ================================================
-   TOPBAR
+   TOPBAR — faixa branca igual ao dashboard
    ================================================ */
 
 .topbar {
   background: var(--branco);
   padding: 18px 30px;
-  border-bottom: 0.5px solid var(--creme-borda);
+  border-bottom: 1px solid #E8E2D8;
   display: flex;
   align-items: center;
+  gap: 12px;
   flex-shrink: 0;
 }
 
+/* Botão menu mobile */
 .menu-mobile {
   display: none;
   background: transparent;
   border: none;
   cursor: pointer;
   color: var(--texto-principal);
+  flex-shrink: 0;
 }
 
-.menu-mobile i {
-  font-size: 24px;
-}
+.menu-mobile i { font-size: 24px; }
 
-/* ================================================
-   CABEÇALHO DA PÁGINA
-   ================================================ */
-
+/* Header dentro da topbar — título + botão */
 .clientes-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex: 1;
 }
 
 .clientes-titulo {
   font-family: 'Lora', serif;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 400;
   color: var(--texto-principal);
 }
 
 .clientes-subtitulo {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--texto-mudo);
-  margin-top: 4px;
+  margin-top: 3px;
 }
 
 .btn-novo-cliente {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #556b2f;
+  background: var(--verde-medio);
   color: white;
   border: none;
   border-radius: 10px;
@@ -264,9 +254,7 @@ html, body {
   transition: background 0.2s ease;
 }
 
-.btn-novo-cliente:hover {
-  background: var(--verde-escuro);
-}
+.btn-novo-cliente:hover { background: var(--verde-escuro); }
 
 /* ================================================
    KPIs
@@ -282,7 +270,7 @@ html, body {
   background: var(--branco);
   border-radius: 12px;
   padding: 16px 18px;
-  border: 0.5px solid var(--creme-borda);
+  border: 1px solid #E8E2D8;
 }
 
 .card-kpi-label {
@@ -308,7 +296,7 @@ html, body {
   background: var(--branco);
   border-radius: 12px;
   padding: 20px 22px;
-  border: 0.5px solid var(--creme-borda);
+  border: 1px solid #E8E2D8;
 }
 
 /* ================================================
@@ -334,9 +322,7 @@ html, body {
   transition: border-color 0.2s ease;
 }
 
-.clientes-busca:focus-within {
-  border-color: var(--verde-claro);
-}
+.clientes-busca:focus-within { border-color: var(--verde-claro); }
 
 .clientes-busca i {
   color: var(--texto-mudo);
@@ -354,9 +340,7 @@ html, body {
   color: var(--texto-principal);
 }
 
-.clientes-busca input::placeholder {
-  color: var(--texto-mudo);
-}
+.clientes-busca input::placeholder { color: var(--texto-mudo); }
 
 .btn-filtro {
   display: flex;
@@ -379,7 +363,7 @@ html, body {
 }
 
 /* ================================================
-   TABELA DE CLIENTES
+   TABELA
    ================================================ */
 
 .clientes-tabela {
@@ -398,18 +382,15 @@ html, body {
   border-bottom: 1px solid var(--creme-borda);
 }
 
-.clientes-tabela tbody tr {
-  transition: background 0.15s ease;
-}
-
-.clientes-tabela tbody tr:hover {
-  background: var(--creme-suave);
-}
+.clientes-tabela tbody tr { transition: background 0.15s ease; }
+.clientes-tabela tbody tr:hover { background: var(--creme-suave); }
 
 .clientes-tabela td {
   padding: 16px 0;
   border-top: 1px solid var(--creme-suave);
   vertical-align: middle;
+  font-size: 13px;
+  color: var(--texto-principal);
 }
 
 .clientes-tabela td strong {
@@ -427,26 +408,19 @@ html, body {
 }
 
 /* ================================================
-   STATUS BADGE
+   STATUS
    ================================================ */
 
 .status {
   display: inline-block;
-  padding: 5px 10px;
+  padding: 4px 10px;
   border-radius: 999px;
   font-size: 11px;
   font-weight: 500;
 }
 
-.status-ativo {
-  background: #e8f6e8;
-  color: #2e7d32;
-}
-
-.status-inativo {
-  background: #f1f1f1;
-  color: #777;
-}
+.status-ativo   { background: var(--verde-palido); color: var(--verde-medio); }
+.status-inativo { background: var(--creme-suave);  color: var(--texto-mudo); }
 
 /* ================================================
    AÇÕES
@@ -465,8 +439,4 @@ html, body {
   transition: color 0.2s ease;
 }
 
-.acoes i:hover {
-  color: var(--verde-escuro);
-}
-
-/* responsividade em responsividade.css */
+.acoes i:hover { color: var(--verde-escuro); }

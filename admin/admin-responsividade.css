@@ -252,3 +252,43 @@ padding:16px;
 }
 
 }
+
+/* ================================================
+PÁGINA CURRICULOS
+=============================================== */
+
+@media (max-width: 992px){
+
+    .curriculos-kpis{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media (max-width: 768px){
+
+    .curriculos-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:16px;
+    }
+
+    .curriculos-kpis{
+        grid-template-columns:1fr;
+    }
+
+    .curriculo-kpi{
+        padding:20px;
+    }
+
+}
+
+@media(max-width:768px){
+
+.menu-mobile{
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+}
+
+}
