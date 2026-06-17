@@ -1,0 +1,766 @@
+/* ==========================================================================
+   RESPONSIVIDADE MASTER UNIFICADA — ESPAÇO E ARTE
+   ========================================================================== */
+
+/* ---- CONTROLE GLOBAL DE SCROLL LATERAL ---- */
+html,
+body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.btn-menu-mobile,
+#btn-menu-mobile {
+  display: none !important;
+}
+
+/* ==========================================================================
+   1. NOTEBOOKS (1420px até 993px)
+   ========================================================================== */
+@media (max-width: 1420px) and (min-width: 1271px) {
+  .logo img {
+    height: 80px;
+  }
+
+  #header-container {
+    height: 85px;
+  }
+
+  nav ul {
+    gap: 25px;
+  }
+
+  nav a {
+    font-size: 1rem !important;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 1270px) and (min-width: 1200px) {
+  .logo img {
+    height: 75px;
+  }
+
+  #header-container {
+    height: 82px;
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+
+  nav a {
+    font-size: 0.95rem !important;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 1050px) and (min-width: 993px) {
+  nav {
+    margin-left: 1.5rem;
+  }
+
+  nav ul {
+    gap: 15px;
+  }
+
+  nav a {
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (max-width: 1013px) and (min-width: 993px) {
+  .logo img {
+    height: 70px;
+  }
+
+  #header-container {
+    height: 80px;
+  }
+
+  nav ul {
+    gap: 15px;
+  }
+
+  nav a {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* ==========================================================================
+   2. DESKTOPS PEQUENOS E TABLETS GRANDES 
+   ========================================================================== */
+@media (max-width: 1200px) and (min-width: 769px) {
+  a {
+    font-size: 0.75rem;
+  }
+
+  p,
+  .footer-contatos a,
+  .footer-enderecos span,
+  .conteudo-esquerda li,
+  .conteudo-direita li {
+    font-size: 0.875rem;
+    line-height: 1.8rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  header {
+    height: 140px;
+  }
+
+  #header-container {
+    max-width: 85%;
+  }
+
+  .logo img {
+    height: 85px;
+  }
+
+  nav {
+    margin-left: 3rem;
+  }
+
+  nav ul {
+    gap: 30px;
+  }
+
+  .opcao-dropdown a {
+    font-size: 0.7rem;
+  }
+
+  .conteudo-esquerda {
+    margin-left: 15%;
+    margin-right: 3rem;
+    max-width: 28rem;
+  }
+
+  .conteudo-direita {
+    margin-right: 15%;
+    margin-left: 3rem;
+    max-width: 28rem;
+  }
+
+  .btn-orcamento {
+    height: 2.4rem;
+    width: 16rem;
+  }
+
+  .btn-orcamento span {
+    font-size: 0.875rem;
+  }
+
+  .projeto-interiores-container,
+  #depoimentos-container {
+    width: 80%;
+    margin: 3.5rem 0 2.5rem 0;
+  }
+
+  .projeto-interiores-carousel,
+  .trabalhos-realizados-carousel,
+  .depoimentos-carousel {
+    width: 80%;
+  }
+
+  .slide-moveis-esquerda,
+  .slide-moveis-meio,
+  .slide-moveis-direita {
+    width: 22rem;
+  }
+
+  .cards {
+    max-width: 80%;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 11rem;
+    height: 11rem;
+    padding: 1.5rem;
+  }
+
+  .formulario {
+    max-width: 32rem;
+    margin-right: 15%;
+  }
+
+  footer {
+    height: 15rem;
+  }
+
+  .footer-container {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  #header-container {
+    max-width: 90%;
+  }
+
+  nav ul {
+    gap: 25px;
+  }
+
+  .conteudo-esquerda {
+    margin-left: 10%;
+    margin-right: 3rem;
+  }
+
+  .conteudo-direita {
+    margin-right: 10%;
+    margin-left: 3rem;
+  }
+
+  .cards {
+    max-width: 90%;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 10rem;
+    height: 10rem;
+    padding: 1.25rem;
+  }
+
+  .projeto-interiores-carousel {
+    width: 90%;
+  }
+
+  .carousel-btns {
+    width: 95%;
+  }
+
+  .formulario {
+    margin-right: 10%;
+  }
+
+  .footer-container {
+    max-width: 90%;
+  }
+
+  #portfolio-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==========================================================================
+   3. SMARTPHONES E TABLETS (Abaixo de 768px) 
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  a,
+  nav a,
+  .opcao-dropdown a,
+  .h1-link {
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    line-height: 1.5rem !important;
+    text-decoration: none !important;
+  }
+
+  /* --- DRAWER LATERAL --- */
+  #header-container nav {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important; 
+    width: 78% !important;
+    max-width: 320px !important;
+    height: 100vh !important;
+    background-color: #c4cfb8 !important;
+    margin: 0 !important;
+    z-index: 1600 !important;
+    overflow-y: auto !important;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: -6px 0 24px rgba(0, 0, 0, 0.15) !important;
+    display: block !important; 
+    padding: 75px 32px 20px 32px !important; 
+    box-sizing: border-box !important;
+  }
+
+  #header-container nav.nav-aberto { 
+    right: 0px !important; 
+  }
+
+  #header-container nav ul { 
+    display: flex !important; 
+    flex-direction: column !important; 
+    justify-content: flex-start !important; 
+    align-items: flex-start !important; 
+    width: 100% !important;
+    height: auto !important; 
+    margin-top: 15px !important; 
+    padding: 0 !important;
+  }
+
+  #header-container nav ul li,
+  nav ul li { 
+    border-bottom: 0.5px solid rgba(40, 40, 40, 0.15) !important; 
+    padding: 14px 0 !important; 
+    width: 100% !important;
+    list-style: none !important;
+    text-align: left !important;
+  }
+
+  nav ul li:last-child {
+    border-bottom: none !important;
+  }
+
+  p,
+  .conteudo li,
+  .conteudo-esquerda li,
+  .conteudo-direita li,
+  .footer-contatos a,
+  .footer-enderecos span,
+  .legenda,
+  .cnpj,
+  .contato-item a,
+  #endereco span {
+    font-size: 1.15rem !important;
+    line-height: 1.8rem !important;
+    text-align: left !important;
+  }
+
+  h1,
+  .h1-link h1,
+  #portfolio h1,
+  #trabalhos-realizados h1,
+  #contato h1 {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    line-height: 2.2rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  h2,
+  .frase h2,
+  .frase-assessoria h2,
+  .frase-botao h2 {
+    font-size: 1.35rem !important;
+    line-height: 1.8rem !important;
+    width: 100% !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  /* --- HEADER E NAVBAR MOBILE --- */
+  header {
+    height: 75px !important;
+    position: sticky !important;
+    top: 0 !important;
+    padding: 0 !important;
+    z-index: 1500 !important;
+    background-color: #c4cfb8 !important;
+  }
+
+  #header-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 75px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important; 
+    position: relative !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  .logo {
+    order: 1 !important; /* Logo na esquerda */
+  }
+
+  .logo img {
+    height: 52px !important;
+    width: auto !important;
+  }
+
+  #header-container nav ul:not(.nav-aberto ul) {
+    display: none !important;
+  }
+
+  /* --- BOTÃO HAMBÚRGUER MOBILE --- */
+  .btn-menu-mobile,
+  #btn-menu-mobile {
+    display: flex !important;
+    order: 2 !important; /* Botão na direita */
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    z-index: 1700 !important;
+  }
+
+  #hamburguer {
+    display: block !important;
+    width: 26px !important;
+    height: 2.5px !important;
+    background-color: #282828 !important;
+    position: relative !important;
+    transition: 0.3s !important;
+  }
+
+  #hamburguer::before,
+  #hamburguer::after {
+    content: '' !important;
+    display: block !important;
+    width: 26px !important;
+    height: 2.5px !important;
+    background-color: #282828 !important;
+    position: absolute !important;
+    transition: 0.3s !important;
+  }
+
+  #hamburguer::before { top: -8px !important; }
+  #hamburguer::after { bottom: -8px !important; }
+
+  /* Efeito de X ativo */
+  .btn-menu-mobile.aberto #hamburguer,
+  #btn-menu-mobile.aberto #hamburguer {
+    background-color: transparent !important;
+  }
+  .btn-menu-mobile.aberto #hamburguer::before,
+  #btn-menu-mobile.aberto #hamburguer::before {
+    transform: rotate(45deg) !important;
+    top: 0 !important;
+  }
+  .btn-menu-mobile.aberto #hamburguer::after,
+  #btn-menu-mobile.aberto #hamburguer::after {
+    transform: rotate(-45deg) !important;
+    bottom: 0 !important;
+  }
+
+  .opcao-dropdown {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    height: auto !important;
+    padding: 6px 0 0 12px !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .opcao-dropdown a {
+    font-size: 0.9rem !important;
+    color: #4a5e3a !important;
+    padding: 5px 0 !important;
+  }
+
+  /* --- LAYOUT EMPILHADO --- */
+  .conteudo {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    width: 100% !important;
+  }
+
+  .conteudo-esquerda,
+  .conteudo-direita {
+    margin: 2rem 5% !important;
+    max-width: 90% !important;
+    text-align: left !important;
+    width: auto !important;
+  }
+
+  .imagem-direita {
+    width: 100% !important;
+    max-height: 280px !important;
+    object-fit: cover !important;
+    order: 2 !important;
+    margin: 1rem 0 0 0 !important;
+  }
+
+  .imagem-esquerda {
+    width: 100% !important;
+    max-height: 280px !important;
+    object-fit: cover !important;
+    order: -1 !important;
+    margin: 0 0 1rem 0 !important;
+  }
+
+  .btn-orcamento {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 1.2rem !important;
+    box-sizing: border-box !important;
+  }
+
+
+  .frase, .frase.paginas {
+    background-color: #c4cfb8 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 2.5rem 1rem !important;
+  }
+
+  .frase::before,
+  .frase::after {
+    display: none !important;
+  }
+
+  .conteudo-apresentacao {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 2rem 1rem !important;
+    box-sizing: border-box !important;
+    gap: 30px !important;
+  }
+
+  .img-apresentacao-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  .img-apresentacao {
+    width: 200px !important;
+    height: 200px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    margin: 0 auto !important;
+  }
+
+  .conteudo-esquerda.apresentacao,
+  .conteudo-direita.apresentacao {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    text-align: justify !important;
+  }
+
+  /*  CARROSSEL DE DEPOIMENTOS */
+
+  .depoimentos-carousel-container.depoimentos-ativo {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    height: auto !important; 
+  }
+
+  .card-depoimentos {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    height: auto !important;
+  }
+
+  /* Remove o tamanho gigante da caixa das setas */
+ 
+
+  section#depoimentos .carousel-btns,
+  section#depoimentos button.carousel-btn,
+  section#depoimentos .carousel-circle-navigation,
+  div#navegacao-depoimentos,
+  #navegacao-depoimentos ul,
+  #navegacao-depoimentos li {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* --- OUTROS ELEMENTOS DO SITE --- */
+  .projeto-interiores-container,
+  #depoimentos-container {
+    width: 92% !important;
+    margin: 2rem auto !important;
+    height: auto !important;
+  }
+
+  .projeto-interiores-carousel,
+  .trabalhos-realizados-carousel,
+  .depoimentos-carousel {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .projeto-interiores-carousel-imgs,
+  .trabalhos-realizados-carousel-imgs {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .projeto-interiores-carousel-imgs:not(.projeto-ativo),
+  .trabalhos-realizados-carousel-imgs:not(.realizados-ativo) {
+    display: none !important;
+  }
+
+  .container-combotao {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    gap: 12px !important;
+  }
+
+  .slide-moveis-esquerda,
+  .slide-moveis-meio,
+  .slide-moveis-direita,
+  .img-wrapper.projeto,
+  .img-wrapper.execucao {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .img-wrapper.projeto img,
+  .img-wrapper.execucao img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  .cards {
+    max-width: 92% !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    margin: 0 auto !important;
+  }
+
+  .card {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 120px !important;
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  #portfolio-container {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 0 5% !important;
+  }
+
+  .portfolio-card {
+    max-width: 100% !important;
+    aspect-ratio: 4/3 !important;
+  }
+
+  .formulario {
+    width: 100% !important;
+    max-width: 90% !important;
+    margin: 2rem auto !important; 
+    box-sizing: border-box !important;
+    padding: 0 10px !important; 
+  }
+
+  .formulario input,
+  .formulario textarea,
+  .formulario select {
+    font-size: 1.1rem !important;
+    padding: 0.8rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+  }
+
+  .buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .buttons button {
+    width: 100% !important;
+  }
+
+  footer {
+    height: auto !important;
+    padding: 2.5rem 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .footer-container {
+    max-width: 90% !important; 
+    width: 90% !important;
+    margin: 0 auto !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 24px !important;
+    box-sizing: border-box !important;
+    padding: 0 10px !important; 
+  }
+
+  .footer-container a, 
+  .footer-container span, 
+  .footer-container p {
+    word-break: break-word !important;
+  }
+
+  .logo-cnpj {
+    text-align: left !important;
+    width: 100% !important;
+  }
+}
+
+/* ==========================================================================
+   4. CELULARES EXTRA PEQUENOS
+   ========================================================================== */
+@media (max-width: 480px) {
+  header,
+  #header-container {
+    height: 65px !important;
+  }
+
+  .logo img {
+    height: 45px !important;
+  }
+
+  h1,
+  .h1-link h1 {
+    font-size: 1.5rem !important;
+  }
+
+  p {
+    font-size: 1rem !important;
+  }
+
+  .banner-slider img {
+    height: 170px !important;
+    object-fit: cover !important;
+  }
+
+  .cards {
+    grid-template-columns: 1fr !important;
+  }
+}
